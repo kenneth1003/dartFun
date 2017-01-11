@@ -1,0 +1,26 @@
+$max_width: 1000px;
+html{
+	height: 100%
+}
+body{
+	color: #666;
+	min-height: 100% 
+}
+.navbar.navbar-default .container-fluid{
+	max-width: $max_width;
+	margin: 0 auto
+}
+.main-container{
+	max-width: $max_width;
+	margin: 0 auto;
+	padding: 15px; 
+}
+.dropdown-menu>li>a{
+	padding: 10px 20px
+}
+.active{
+	background-color: #ddd  
+}
+.active:hover{
+	background-color: #ddd !important 
+}
