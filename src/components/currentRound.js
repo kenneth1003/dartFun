@@ -1,0 +1,23 @@
+import React from 'react';
+
+export default ({ players, currentPlayer, gameStatus }) => {
+  if(players.size === 0) {
+    return (
+      <ul className="current-round-list">
+        <li>-</li>
+        <li>-</li>
+        <li>-</li>
+      </ul>
+    );
+    }
+  return (
+    <ul className="current-round-list">
+      {
+        players.get(currentPlayer)
+          .get('records')
+          .get(gameStatus.get('currentRound'))
+          .map((dart) => <li>{ dart }</li> )
+      }
+    </ul>
+  )
+}
