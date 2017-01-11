@@ -1,15 +1,10 @@
-// import {
+import * as types from '../actions/types';
 
-// } from './types';
-const UNDO_SCORE = 'undo_score';
-const UPDATE_SCORE = 'update_score';
-const UPDATE_ROUND = 'update_round';
-const RESET = 'reset';
-const ADD_PLAYER = 'add_player';
+
 
 export function updateScore (score, cp, cr, cd) {
   return {
-    type: UPDATE_SCORE,
+    type: types.UPDATE_SCORE,
     payload: {
       currentPlayer: cp,
       currentRound: cr,
@@ -21,7 +16,7 @@ export function updateScore (score, cp, cr, cd) {
 
 export function updateRound (isNextRound, currentPlayer) {
   return {
-    type: UPDATE_ROUND,
+    type: types.UPDATE_ROUND,
     payload: {
       isNextRound,
       currentPlayer
@@ -31,19 +26,37 @@ export function updateRound (isNextRound, currentPlayer) {
 
 export function undoScore () {
   return {
-    type: UNDO_SCORE
+    type: types.UNDO_SCORE
   }
 }
 
 
 export function reset () {
   return {
-    type: RESET
+    type: types.RESET
   }
 }
 
 export function addPlayer () {
   return {
-    type: ADD_PLAYER
+    type: types.ADD_PLAYER
   }
 }
+
+export function setGame (game) {
+  return {
+    type:  types.SET_GAME,
+    payload: game
+  }
+}
+
+export function burst (cp, cr) {
+  return {
+    type:  types.BURST,
+    payload: {
+      currentPlayer: cp,
+      currentRound: cr
+    }
+  }
+}
+

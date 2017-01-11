@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classname';
-import helper from '../helper'
+import helper from '../../helper'
 
 export default ({ players, currentPlayer }) => {
   if(players.size === 0) {
@@ -15,7 +15,9 @@ export default ({ players, currentPlayer }) => {
       {
         players.get(currentPlayer)
           .get('records')
-          .map((round) => { let sum = round.reduce((pre, cur) => (pre + helper.symbolToNum(cur)), 0); sum = isNaN(sum) ? 'burst' : sum ; return (<li className={cx({ fontRed: sum > 100 })}>{ 
+          .map((round) => { let sum = round.reduce((pre, cur) => (pre + helper.symboToCounts(cur)), ''); 
+            sum = isNaN(sum) ? 'burst' : sum ; 
+            return (<li>{ 
             sum
           }</li>)} )
       }

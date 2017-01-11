@@ -1,5 +1,5 @@
 import React from 'react';
-import helper from '../helper';
+import helper from '../../helper';
 
 export default ({ players, currentPlayer, gameStatus }) => {
   if(players.size === 0) {
@@ -17,7 +17,7 @@ export default ({ players, currentPlayer, gameStatus }) => {
         players.get(currentPlayer)
           .get('records')
           .get(gameStatus.get('currentRound'))
-          .map((dart) => <li>{ helper.symbolToNum(dart) }</li> )
+          .map((dart) => <li>{ helper.symbolToString(dart) }</li> )
       }
     </ol>
   )

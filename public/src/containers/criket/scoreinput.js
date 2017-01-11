@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 import cx from 'classname';
-import helper from '../helper';
+import helper from '../../helper';
 
 let scoreArr = [];
- for(let i = 1; i <= 20; i++ ){
+ for(let i = 15; i <= 20; i++ ){
   scoreArr.push(i);          
  }
  let round = 0;
@@ -65,22 +65,26 @@ class App extends Component {
         <li className={ cx({ active: gameType === 301 }) } onClick={ this.props.setGame.bind(null, 301) }><button>301</button></li>
         <li className={ cx({ active: gameType === 501 }) } onClick={ this.props.setGame.bind(null, 501) }><button>501</button></li>
         <li className={ cx({ active: gameType === 701 }) } onClick={ this.props.setGame.bind(null, 701) }><button>701</button></li>
-        <li className={ cx({ active: gameType === 'criket' }) } onClick={ this.props.setGame.bind(null, 'criket') }><button>Criket</button></li>
+        <li className={ cx({ active: gameType === 701 }) } onClick={ this.props.setGame.bind(null, 'criket') }><button>Criket</button></li>
         <br/>
-        <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 'd' + 25) }>Bull</button></li>
+        <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 50) }>Bull</button></li>
         <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 0) }>Miss</button></li>
         <br/>
-        <li>一倍</li><br/>
+        <li>一倍</li>
         { scoreArr.map( (score, idx) => {
-          return (<li className="btn-single" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 's' + (idx+1)) }>{ idx+1 }</button></li>)
+          return (<li className="btn-single" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 's' + (idx+15)) }>{ idx+15 }</button></li>)
         }) }
-        <li>兩倍</li><br/>
+        <li className="btn-single"><button onClick={ this.scoreOnClick.bind(this, 'd25') }>Bull</button></li>
+        <br/>
+        <li>兩倍</li>
         { scoreArr.map( (score, idx) => {
-          return (<li className="btn-double" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 'd' + (idx+1)) }>{ idx+1 }</button></li>)
+          return (<li className="btn-double" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 'd' + (idx+15)) }>{ idx+15 }</button></li>)
         }) }
-        <li>三倍</li><br/>
+        <li className="btn-double"><button onClick={ this.scoreOnClick.bind(this, 'd25') }>Bull</button></li>
+        <br />
+        <li>三倍</li>
         { scoreArr.map( (score, idx) => {
-          return (<li className="btn-triple" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 't' + (idx+1)) }>{ idx+1 }</button></li>)
+          return (<li className="btn-triple" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 't' + (idx+15)) }>{ idx+15 }</button></li>)
         }) }
       </ul>
     )
