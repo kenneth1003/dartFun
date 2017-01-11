@@ -100,7 +100,7 @@ ul {
 }
 .score-btn-list li button{
   cursor: pointer;
-  font-size: 16px;
+  font-size: 16px; 
   padding: 10px 5px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
