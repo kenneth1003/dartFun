@@ -22243,6 +22243,9 @@
 	    }
 	    var firstLetter = symbol[0];
 	    var num = +symbol.slice(1);
+	    if (num === 0) {
+	      return 'Miss';
+	    }
 	    switch (firstLetter) {
 	      case 's':
 	        return 'Single ' + num;
@@ -27434,6 +27437,10 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
+	var _classname = __webpack_require__(203);
+
+	var _classname2 = _interopRequireDefault(_classname);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = function (_ref) {
@@ -27703,6 +27710,7 @@
 	          )
 	        ),
 	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'btn-special' },
@@ -27906,6 +27914,7 @@
 	var SET_GAME_STATUS = exports.SET_GAME_STATUS = 'set_game_status';
 	var SET_GAME = exports.SET_GAME = 'set_game';
 	var BURST = exports.BURST = 'burst';
+	var UPDATE_DART = exports.UPDATE_DART = 'update_dart';
 
 /***/ },
 /* 213 */
@@ -28584,6 +28593,7 @@
 	          )
 	        ),
 	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'btn-special' },
@@ -28670,7 +28680,16 @@
 	              idx + 15
 	            )
 	          );
-	        })
+	        }),
+	        _react2.default.createElement(
+	          'li',
+	          { className: 'btn-double' },
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            '\xA0'
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -28868,7 +28887,8 @@
 	  switch (action.type) {
 	    case types.SET_GAME_STATUS:
 	      return state;
-
+	    case types.UPDATE_SCORE:
+	      return state.set('currentDart', action.payload.currentDart);
 	    case types.UPDATE_ROUND:
 	      var cr = state.get('currentRound');
 	      if (action.payload.isNextRound) {
@@ -28902,7 +28922,7 @@
 	var Map = _immutable2.default.Map,
 	    List = _immutable2.default.List;
 
-	var initialState = Map({ currentRound: 0, status: 0, type: 'criket', playing: false });
+	var initialState = Map({ currentRound: 0, status: 0, type: 'criket', playing: false, currentDart: 0 });
 
 /***/ },
 /* 225 */

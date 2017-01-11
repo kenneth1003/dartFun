@@ -58,6 +58,7 @@ let Helper =  {
     if (typeof symbol === 'number') { return symbol }
     var firstLetter = symbol[0];
     var num = +symbol.slice(1);
+    if(num === 0) { return 'Miss' }
     switch (firstLetter) {
       case 's':
         return 'Single ' + num;

@@ -31,6 +31,8 @@ export function undoScore () {
 }
 
 
+
+
 export function reset () {
   return {
     type: types.RESET
@@ -49,6 +51,8 @@ export function setGame (game) {
     payload: game
   }
 }
+
+
 
 export function burst (cp, cr) {
   return {

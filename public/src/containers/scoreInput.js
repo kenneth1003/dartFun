@@ -67,6 +67,7 @@ class App extends Component {
         <li className={ cx({ active: gameType === 701, hidden: this.props.gameStatus.get('playing') }) } onClick={ this.props.setGame.bind(null, 701) }><button>701</button></li>
         <li className={ cx({ active: gameType === 'criket', hidden: this.props.gameStatus.get('playing') }) } onClick={ this.props.setGame.bind(null, 'criket') }><button>Criket</button></li>
         <br/>
+        <hr/>
         <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 'd' + 25) }>Bull</button></li>
         <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 0) }>Miss</button></li>
         <br/>

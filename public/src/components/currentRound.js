@@ -1,5 +1,6 @@
 import React from 'react';
 import helper from '../helper';
+import cx from 'classname';
 
 export default ({ players, currentPlayer, gameStatus }) => {
   if(players.size === 0) {

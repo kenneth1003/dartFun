@@ -43,19 +43,23 @@ ul {
   font-size: 20px;
   padding: 15px;
   float: right;
-  border: 1px solid #f5f5f5;
   min-width: 180px;
   padding-left: 25px;
 }
+.current-round-list li {
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+.current-round-list li.active {
+  background-color: #eee;
+}
 .stats {
   display: inline-block;
-  border: 1px solid #f5f5f5;
 }
 .history-score-list {
   display: inline-block;
   vertical-align: middle;
   padding: 15px;
-  border: 1px solid #f5f5f5;
   min-width: 80px;
 /*  height: 300px;
   overflow: auto;*/
@@ -85,7 +89,7 @@ ul {
 }
 .criket-score-board .player{
   font-size: 28px;
-  padding: 10px 4px;
+  padding: 8px 4px;
 }
 
 .player-list {
@@ -95,7 +99,7 @@ ul {
 }
 .player {
  display: inline-block; 
- font-size: 20px;
+ font-size: 24px;
  padding: 15px;
 }
 .player.active {
@@ -107,10 +111,12 @@ ul {
   width: 100%;
 }
 .score-btn-list {
-  border-top: 2px solid #eee;
+  border-top: 1px solid #999;
   margin-top: 30px;
   padding: 15px;
-  width: 100%;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
 }
 .score-btn-list li {
   display: inline-block;
@@ -163,7 +169,7 @@ ul {
   font-size: 14px;
 }
 .w40 {
-  width: 48px;
+  width: 38px;
 }
 .font-red {
   color: #dd0000;
