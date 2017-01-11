@@ -69,7 +69,6 @@ function criketScoreCount(symbol, state, currentPlayer) {
     }
 
     if (currentPlayerCount < 3) { 
-      console.log('oooo',offset);
       offset = 3 - currentPlayerCount;
     }
 

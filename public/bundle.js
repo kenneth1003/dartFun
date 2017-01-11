@@ -21908,14 +21908,11 @@
 	          { className: 'container' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'current-player' },
-	            'Player ',
-	            this.props.currentPlayer + 1
+	            { className: 'top' },
+	            _react2.default.createElement(_historyScore4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
+	            _react2.default.createElement(_scoreBoard2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	            _react2.default.createElement(_currentRound4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
 	          ),
-	          _react2.default.createElement(_historyScore4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
-	          _react2.default.createElement(_stats4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_scoreBoard2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_currentRound4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
 	          _react2.default.createElement(_players4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
 	          _react2.default.createElement(_scoreInput4.default, null)
 	        );
@@ -21925,14 +21922,12 @@
 	        { className: 'container' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'current-player' },
-	          'Player ',
-	          this.props.currentPlayer + 1
+	          { className: 'top' },
+	          _react2.default.createElement(_historyScore2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
+	          _react2.default.createElement(_stats2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	          _react2.default.createElement(_currentScore2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	          _react2.default.createElement(_currentRound2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
 	        ),
-	        _react2.default.createElement(_historyScore2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
-	        _react2.default.createElement(_stats2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	        _react2.default.createElement(_currentScore2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	        _react2.default.createElement(_currentRound2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
 	        _react2.default.createElement(_players2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
 	        _react2.default.createElement(_scoreInput2.default, null)
 	      );
@@ -21984,7 +21979,7 @@
 	      _react2.default.createElement(
 	        'li',
 	        { className: 'player' },
-	        '\u4F60\u597D',
+	        '\u8ACB\u5148\u65B0\u589E\u73A9\u5BB6',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null)
 	      )
@@ -27470,10 +27465,10 @@
 	  return _react2.default.createElement(
 	    'ol',
 	    { className: 'current-round-list' },
-	    players.get(currentPlayer).get('records').get(gameStatus.get('currentRound')).map(function (dart) {
+	    players.get(currentPlayer).get('records').get(gameStatus.get('currentRound')).map(function (dart, idx) {
 	      return _react2.default.createElement(
 	        'li',
-	        null,
+	        { key: idx },
 	        _helper2.default.symbolToNum(dart)
 	      );
 	    })
@@ -27522,12 +27517,12 @@
 	  return _react2.default.createElement(
 	    'ol',
 	    { className: 'history-score-list' },
-	    players.get(currentPlayer).get('records').map(function (round) {
+	    players.get(currentPlayer).get('records').map(function (round, idx) {
 	      var sum = round.reduce(function (pre, cur) {
 	        return pre + _helper2.default.symbolToNum(cur);
 	      }, 0);sum = isNaN(sum) ? 'burst' : sum;return _react2.default.createElement(
 	        'li',
-	        { className: (0, _classname2.default)({ fontRed: sum > 100 }) },
+	        { key: idx, className: (0, _classname2.default)({ fontRed: sum > 100 }) },
 	        sum
 	      );
 	    })
@@ -27649,7 +27644,7 @@
 	        { className: 'score-btn-list' },
 	        _react2.default.createElement(
 	          'li',
-	          { onClick: this.props.addPlayer },
+	          { onClick: this.props.addPlayer, className: (0, _classname2.default)({ 'font-red': true, hidden: this.props.gameStatus.get('playing') }) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -27668,12 +27663,12 @@
 	        '\xA0\xA0\xA0\xA0',
 	        _react2.default.createElement(
 	          'li',
-	          { style: { textAlign: 'right' } },
+	          { className: (0, _classname2.default)({ hidden: this.props.gameStatus.get('playing') }), style: { textAlign: 'right' } },
 	          '\u7A2E\u985E\uFF1A'
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 301 }), onClick: this.props.setGame.bind(null, 301) },
+	          { className: (0, _classname2.default)({ active: gameType === 301, hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 301) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -27682,7 +27677,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 501 }), onClick: this.props.setGame.bind(null, 501) },
+	          { className: (0, _classname2.default)({ active: gameType === 501, hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 501) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -27691,7 +27686,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 701 }), onClick: this.props.setGame.bind(null, 701) },
+	          { className: (0, _classname2.default)({ active: gameType === 701, hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 701) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -27700,7 +27695,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 'criket' }), onClick: this.props.setGame.bind(null, 'criket') },
+	          { className: (0, _classname2.default)({ active: gameType === 'criket', hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 'criket') },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -27722,7 +27717,7 @@
 	          { className: 'btn-special' },
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: this.scoreOnClick.bind(this, 0) },
+	            { onClick: this.scoreOnClick.bind(this, 's' + 0) },
 	            'Miss'
 	          )
 	        ),
@@ -27730,7 +27725,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          null,
-	          '\u4E00\u500D'
+	          '1\u500D'
 	        ),
 	        _react2.default.createElement('br', null),
 	        scoreArr.map(function (score, idx) {
@@ -27747,7 +27742,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          null,
-	          '\u5169\u500D'
+	          '2\u500D'
 	        ),
 	        _react2.default.createElement('br', null),
 	        scoreArr.map(function (score, idx) {
@@ -27764,7 +27759,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          null,
-	          '\u4E09\u500D'
+	          '3\u500D'
 	        ),
 	        _react2.default.createElement('br', null),
 	        scoreArr.map(function (score, idx) {
@@ -27801,7 +27796,6 @@
 	}
 
 	function checkEndCondition(point, currentShot, gameType) {
-	  console.log(point, currentShot, gameType);
 	  if (point + currentShot < gameType) {
 	    return 0;
 	  }
@@ -27945,7 +27939,7 @@
 	      _react2.default.createElement(
 	        'li',
 	        { className: 'player' },
-	        '\u4F60\u597D',
+	        '\u8ACB\u5148\u65B0\u589E\u73A9\u5BB6',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null)
 	      )
@@ -28021,23 +28015,57 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classname = __webpack_require__(203);
-
-	var _classname2 = _interopRequireDefault(_classname);
-
 	var _helper = __webpack_require__(204);
 
 	var _helper2 = _interopRequireDefault(_helper);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = function (_ref) {
-	  var player = _ref.player;
+	var avg = 0;
 
+	exports.default = function (_ref) {
+	  var players = _ref.players,
+	      currentPlayer = _ref.currentPlayer,
+	      gameStatus = _ref.gameStatus;
+
+	  var player = players.get(currentPlayer);
+	  if (!player) {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'stats' },
+	      '\u4E09\u6A19\u5E73\u5747:'
+	    );
+	  }
+	  var records = player.get('records');
+	  var recordSum = _helper2.default.recordsToSum(records);
+	  var numerator = recordSum - _helper2.default.sum3Darts(records.get(gameStatus.get('currentRound')));
+	  var denominator = gameStatus.get('currentRound');
+	  if (gameStatus.get('type') - recordSum < 150) {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'stats' },
+	      '\u4E09\u6A19\u5E73\u5747:',
+	      _react2.default.createElement('br', null),
+	      avg
+	    );
+	  }
+	  avg = (numerator / denominator).toFixed(2);
+	  if (!denominator) {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'stats' },
+	      '\u4E09\u6A19\u5E73\u5747: ',
+	      _react2.default.createElement('br', null),
+	      '-- '
+	    );
+	  }
 	  return _react2.default.createElement(
 	    'div',
-	    { className: '' },
-	    'Hello'
+	    { className: 'stats' },
+	    '\u4E09\u6A19\u5E73\u5747: ',
+	    _react2.default.createElement('br', null),
+	    ' ',
+	    (numerator / denominator).toFixed(2)
 	  );
 	};
 
@@ -28099,6 +28127,16 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: (0, _classname2.default)({ player: true }) },
+	          'Bull'
+	        ),
+	        _react2.default.createElement('br', null)
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: (0, _classname2.default)({ player: true }) },
 	          '20'
 	        ),
 	        _react2.default.createElement('br', null)
@@ -28152,16 +28190,6 @@
 	          '15'
 	        ),
 	        _react2.default.createElement('br', null)
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: (0, _classname2.default)({ player: true }) },
-	          'Bull'
-	        ),
-	        _react2.default.createElement('br', null)
 	      )
 	    ),
 	    players.map(function (player, idx) {
@@ -28207,21 +28235,21 @@
 
 	  var records = player.get('records');
 	  var counts = player.get('criketInfo').get('counts');
-	  // const counts = helper.recordsToCounts(records);
+	  var reverseCounts = player.get('criketInfo').get('counts').reverse();
 	  return _react2.default.createElement(
 	    'li',
 	    { className: (0, _classname2.default)({ player: true, active: num === cp }) },
 	    _react2.default.createElement(
 	      'span',
-	      null,
+	      { className: 'fs14' },
 	      'Player',
 	      num + 1
 	    ),
-	    counts.map(function (count, idx) {
+	    reverseCounts.map(function (count, idx) {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_scoreBoardCount2.default, { key: idx, count: counts.get(idx).get('count') }),
+	        _react2.default.createElement(_scoreBoardCount2.default, { key: idx, count: reverseCounts.get(idx).get('count') }),
 	        _react2.default.createElement('br', null)
 	      );
 	    })
@@ -28255,13 +28283,31 @@
 	exports.default = function (_ref) {
 	  var player = _ref.player,
 	      count = _ref.count,
-	      num = _ref.num;
+	      num = _ref.num,
+	      key = _ref.key;
 
-	  console.log(count);
+	  var img = void 0;
+	  if (count === 0) {
+	    img = _react2.default.createElement(
+	      'div',
+	      null,
+	      '\xA0'
+	    );
+	  }
+	  if (count === 1) {
+	    img = _react2.default.createElement('div', { className: 'count-img count-img-1' });
+	  }
+	  if (count === 2) {
+	    img = _react2.default.createElement('div', { className: 'count-img count-img-2' });
+	  }
+	  if (count >= 3) {
+	    img = _react2.default.createElement('div', { className: 'count-img count-img-3' });
+	  }
+
 	  return _react2.default.createElement(
 	    'div',
-	    { className: (0, _classname2.default)({ player: true }) },
-	    count
+	    { className: (0, _classname2.default)({ player: true, w40: true }) },
+	    img
 	  );
 	};
 
@@ -28314,10 +28360,10 @@
 	  return _react2.default.createElement(
 	    'ol',
 	    { className: 'current-round-list' },
-	    players.get(currentPlayer).get('records').get(gameStatus.get('currentRound')).map(function (dart) {
+	    players.get(currentPlayer).get('records').get(gameStatus.get('currentRound')).map(function (dart, idx) {
 	      return _react2.default.createElement(
 	        'li',
-	        null,
+	        { key: idx },
 	        _helper2.default.symbolToString(dart)
 	      );
 	    })
@@ -28366,14 +28412,13 @@
 	  return _react2.default.createElement(
 	    'ol',
 	    { className: 'history-score-list' },
-	    players.get(currentPlayer).get('records').map(function (round) {
+	    players.get(currentPlayer).get('records').map(function (round, idx) {
 	      var sum = round.reduce(function (pre, cur) {
 	        return pre + _helper2.default.symboToCounts(cur);
 	      }, '');
-	      sum = isNaN(sum) ? 'burst' : sum;
 	      return _react2.default.createElement(
 	        'li',
-	        null,
+	        { key: idx },
 	        sum
 	      );
 	    })
@@ -28441,30 +28486,15 @@
 	      if (this.props.players.size === 0) {
 	        alert('請先新增玩家');return;
 	      };
-	      var player = this.props.players.get(this.props.currentPlayer);
-	      var records = player.get('records');
-	      var totalScore = _helper2.default.recordsToSum(records);
-	      var judge = checkEndCondition(totalScore, _helper2.default.symbolToNum(num), this.props.gameStatus.get('type'));
 
 	      this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round);
 
-	      if (judge === 1) {
-	        alert('player' + (this.props.currentPlayer + 1) + 'wins');
-	      }
-	      if (judge === 2) {
-	        this.props.burst(this.props.currentPlayer, this.props.gameStatus.get('currentRound'));
+	      round++;
+	      if (round >= 3) {
 	        round = 0;
 	        var allPlayer = this.props.players.size;
 	        var isNextRound = +this.props.currentPlayer == allPlayer - 1;
 	        this.props.updateRound(isNextRound, nextPlayer(this.props.players.size, this.props.currentPlayer));
-	        return;
-	      }
-	      round++;
-	      if (round >= 3) {
-	        round = 0;
-	        var _allPlayer = this.props.players.size;
-	        var _isNextRound = +this.props.currentPlayer == _allPlayer - 1;
-	        this.props.updateRound(_isNextRound, nextPlayer(this.props.players.size, this.props.currentPlayer));
 	      }
 	    }
 	  }, {
@@ -28495,7 +28525,7 @@
 	        { className: 'score-btn-list' },
 	        _react2.default.createElement(
 	          'li',
-	          { onClick: this.props.addPlayer },
+	          { onClick: this.props.addPlayer, className: (0, _classname2.default)({ 'font-red': true, hidden: this.props.gameStatus.get('playing') }) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -28514,12 +28544,12 @@
 	        '\xA0\xA0\xA0\xA0',
 	        _react2.default.createElement(
 	          'li',
-	          { style: { textAlign: 'right' } },
+	          { className: (0, _classname2.default)({ hidden: this.props.gameStatus.get('playing') }), style: { textAlign: 'right' } },
 	          '\u7A2E\u985E\uFF1A'
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 301 }), onClick: this.props.setGame.bind(null, 301) },
+	          { className: (0, _classname2.default)({ active: gameType === 301, hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 301) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -28528,7 +28558,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 501 }), onClick: this.props.setGame.bind(null, 501) },
+	          { className: (0, _classname2.default)({ active: gameType === 501, hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 501) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -28537,7 +28567,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 701 }), onClick: this.props.setGame.bind(null, 701) },
+	          { className: (0, _classname2.default)({ active: gameType === 701, hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 701) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -28546,7 +28576,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 701 }), onClick: this.props.setGame.bind(null, 'criket') },
+	          { className: (0, _classname2.default)({ active: gameType === 'criket', hidden: this.props.gameStatus.get('playing') }), onClick: this.props.setGame.bind(null, 'criket') },
 	          _react2.default.createElement(
 	            'button',
 	            null,
@@ -28568,7 +28598,7 @@
 	          { className: 'btn-special' },
 	          _react2.default.createElement(
 	            'button',
-	            { onClick: this.scoreOnClick.bind(this, 0) },
+	            { onClick: this.scoreOnClick.bind(this, 's' + 0) },
 	            'Miss'
 	          )
 	        ),
@@ -28576,7 +28606,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          null,
-	          '\u4E00\u500D'
+	          '1\u500D'
 	        ),
 	        scoreArr.map(function (score, idx) {
 	          return _react2.default.createElement(
@@ -28602,7 +28632,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          null,
-	          '\u5169\u500D'
+	          '2\u500D'
 	        ),
 	        scoreArr.map(function (score, idx) {
 	          return _react2.default.createElement(
@@ -28628,7 +28658,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          null,
-	          '\u4E09\u500D'
+	          '3\u500D'
 	        ),
 	        scoreArr.map(function (score, idx) {
 	          return _react2.default.createElement(
@@ -28664,7 +28694,6 @@
 	}
 
 	function checkEndCondition(point, currentShot, gameType) {
-	  console.log(point, currentShot, gameType);
 	  if (point + currentShot < gameType) {
 	    return 0;
 	  }
@@ -28810,7 +28839,6 @@
 	    }
 
 	    if (currentPlayerCount < 3) {
-	      console.log('oooo', offset);
 	      offset = 3 - currentPlayerCount;
 	    }
 
@@ -28848,6 +28876,8 @@
 	        return newState;
 	      }
 	      return state;
+	    case types.UPDATE_SCORE:
+	      return state.set('playing', true);
 	    case types.SET_GAME:
 	      return state.set('type', action.payload);
 	    case types.RESET:
@@ -28872,7 +28902,7 @@
 	var Map = _immutable2.default.Map,
 	    List = _immutable2.default.List;
 
-	var initialState = Map({ currentRound: 0, status: 0, type: 'criket' });
+	var initialState = Map({ currentRound: 0, status: 0, type: 'criket', playing: false });
 
 /***/ },
 /* 225 */
@@ -28893,7 +28923,6 @@
 	      return 0;
 
 	    case types.UPDATE_ROUND:
-	      console.log('ppp', action.payload.currentPlayer);
 	      return action.payload.currentPlayer;
 
 	    case types.RESET:

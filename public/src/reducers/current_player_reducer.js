@@ -7,7 +7,6 @@ export default function(state = 0, action) {
       return 0;
 
     case types.UPDATE_ROUND:
-      console.log('ppp',action.payload.currentPlayer);
       return action.payload.currentPlayer;
 
     case types.RESET:

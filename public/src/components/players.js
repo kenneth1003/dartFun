@@ -6,7 +6,7 @@ export default ({ players, currentPlayer, gameStatus }) => {
     return(
     <ul className="player-list">
       <li className="player">
-        你好
+        請先新增玩家
         <br/>
         <br/>
       </li>

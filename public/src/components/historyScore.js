@@ -15,7 +15,7 @@ export default ({ players, currentPlayer }) => {
       {
         players.get(currentPlayer)
           .get('records')
-          .map((round) => { let sum = round.reduce((pre, cur) => (pre + helper.symbolToNum(cur)), 0); sum = isNaN(sum) ? 'burst' : sum ; return (<li className={cx({ fontRed: sum > 100 })}>{ 
+          .map((round, idx) => { let sum = round.reduce((pre, cur) => (pre + helper.symbolToNum(cur)), 0); sum = isNaN(sum) ? 'burst' : sum ; return (<li key={ idx } className={cx({ fontRed: sum > 100 })}>{ 
             sum
           }</li>)} )
       }

@@ -17,7 +17,7 @@ export default ({ players, currentPlayer, gameStatus }) => {
         players.get(currentPlayer)
           .get('records')
           .get(gameStatus.get('currentRound'))
-          .map((dart) => <li>{ helper.symbolToString(dart) }</li> )
+          .map((dart, idx) => <li key={ idx }>{ helper.symbolToString(dart) }</li> )
       }
     </ol>
   )

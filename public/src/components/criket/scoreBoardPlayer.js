@@ -7,14 +7,14 @@ import helper from '../../helper';
 export default ({ player, key, num, type, cp }) => {
   const records = player.get('records');
   const counts = player.get('criketInfo').get('counts');
-  // const counts = helper.recordsToCounts(records);
+  const reverseCounts = player.get('criketInfo').get('counts').reverse();
   return (<li className={cx({ player: true, active: num === cp })}>
-    <span>Player{ num + 1 }</span>
+    <span className="fs14">Player{ num + 1 }</span>
 
     {
-      counts.map((count, idx) => (
+      reverseCounts.map((count, idx) => (
         <div>
-          <Count key={ idx } count={ counts.get(idx).get('count') } /> 
+          <Count key={ idx } count={ reverseCounts.get(idx).get('count') } /> 
           <br/>
         </div>
       ))

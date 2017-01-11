@@ -13,12 +13,16 @@ section, summary, time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
   /*background-color: #000044 !important;*/
   /*color: #fff !important;*/
+  font-family: Arial
 }
 ul {
   list-style: none;
@@ -27,37 +31,51 @@ ul {
  /* display: flex;
   flex-wrap: wrap;*/
 }
-
+.top {
+  display: flex;
+  -webkit-justify-content: center;
+          justify-content: center;
+  margin-top: 25px;
+}
 .current-round-list {
   display: inline-block;
   vertical-align: top;
-  width: 30%;
   font-size: 20px;
   padding: 15px;
   float: right;
   border: 1px solid #f5f5f5;
+  min-width: 180px;
+  padding-left: 25px;
 }
 .stats {
   display: inline-block;
-  width: 15%;
   border: 1px solid #f5f5f5;
 }
 .history-score-list {
   display: inline-block;
   vertical-align: middle;
   padding: 15px;
-  width: 15%;
   border: 1px solid #f5f5f5;
+  min-width: 80px;
 /*  height: 300px;
   overflow: auto;*/
 }
 .history-score-list li{
   text-align: center;
-  font-size: 12px;
+  font-size: 15px;
   border-bottom: 1px solid #ccc;
   padding: 2px 0;
+  min-width: 80px;
 }
 .current-score {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 130px;
+  padding: 15px;
+  text-align: center;
+  margin: 0 50px;
+}
+.criket-score-board {
   display: inline-block;
   vertical-align: middle;
   width: 40%;
@@ -65,10 +83,15 @@ ul {
   padding: 15px;
   text-align: center;
 }
+.criket-score-board .player{
+  font-size: 28px;
+  padding: 10px 4px;
+}
 
 .player-list {
   width: 100%;
   padding: 15px;
+  text-align: center;; 
 }
 .player {
  display: inline-block; 
@@ -84,16 +107,20 @@ ul {
   width: 100%;
 }
 .score-btn-list {
+  border-top: 2px solid #eee;
+  margin-top: 30px;
+  padding: 15px;
   width: 100%;
 }
 .score-btn-list li {
   display: inline-block;
-  border: 4px solid #fff;
-  width: 10%;
+  margin: 4px;
+  width: calc(10% - 8px);
   text-align: center;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+  transition: all .15s;
 }
 .score-btn-list li.active {
   background-color: #eee;
@@ -106,28 +133,82 @@ ul {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   background: none;
-  border: none;
+  border: none !important;
   text-align: center;
   width: 100%;
+  display: inline-block;
 }
 
-.score-btn-list li button:hover{
-  background-color: #eee;
-  border: none;
-
+.score-btn-list li:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+}
 }
 .btn-special {
-  background-color: #bbb;
+  background-color: #ccc;
 }
 .btn-single {
 
 }
 .btn-double {
-  background-color: #efe;
+  background-color: #eee;
 }
 .btn-triple {
-  background-color: #fee;
+  background-color: #ddd;
 }
-.fontRed {
+.font-red {
   color: #DD0000;
+}
+.fs14 {
+  font-size: 14px;
+}
+.w40 {
+  width: 48px;
+}
+.font-red {
+  color: #dd0000;
+}
+.hidden {
+  display: none !important;
+}
+
+
+/* count img */
+
+.count-img {
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 100%;
+  border: 1px solid;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+.count-img:after {
+  content: '';
+  position: absolute;
+  border-top: 1px solid;
+  width: 140%;
+  transform: rotate(-45deg);
+  left:-20%;
+  top: 50%;
+  
+}
+.count-img:before {
+  content: '';
+  position: absolute;
+  border-top: 1px solid;
+  width: 140%;
+  left:-20%;
+  top: 50%;
+  transform: rotate(45deg);
+}
+.count-img-1 {
+  border-color: transparent;
+}
+.count-img-1:after {
+  opacity: 0;
+}
+.count-img-2 {
+  border-color: transparent;
 }

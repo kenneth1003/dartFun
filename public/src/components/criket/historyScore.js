@@ -15,9 +15,8 @@ export default ({ players, currentPlayer }) => {
       {
         players.get(currentPlayer)
           .get('records')
-          .map((round) => { let sum = round.reduce((pre, cur) => (pre + helper.symboToCounts(cur)), ''); 
-            sum = isNaN(sum) ? 'burst' : sum ; 
-            return (<li>{ 
+          .map((round, idx) => { let sum = round.reduce((pre, cur) => (pre + helper.symboToCounts(cur)), ''); 
+            return (<li key={ idx }>{ 
             sum
           }</li>)} )
       }

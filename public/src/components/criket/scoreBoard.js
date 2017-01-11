@@ -11,6 +11,9 @@ export default ({ players, currentPlayer, gameStatus }) => {
       <li className="player">
         <span>&nbsp;</span>
         <div>
+          <div className={cx({ player: true })}>Bull</div><br/>
+        </div>
+        <div>
           <div className={cx({ player: true })}>20</div><br/>
         </div>
         <div>
@@ -27,9 +30,6 @@ export default ({ players, currentPlayer, gameStatus }) => {
         </div>
         <div>
           <div className={cx({ player: true })}>15</div><br/>
-        </div>
-        <div>
-          <div className={cx({ player: true })}>Bull</div><br/>
         </div>
       </li>
       {

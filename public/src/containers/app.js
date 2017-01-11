@@ -22,11 +22,11 @@ class App extends Component {
     if(this.props.gameStatus.get('type') === 'criket') {
       return (
         <div className="container">
-          <div className="current-player">Player { this.props.currentPlayer + 1 }</div>
-          <CriketHistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
-          <CriketStats players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
-          <CriketScoreBoard players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
-          <CriketCurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+          <div className="top">
+            <CriketHistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
+            <CriketScoreBoard players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
+            <CriketCurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+          </div>
           <CriketPlayers players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
           <CriketScoreInput />
         </div>
@@ -34,11 +34,12 @@ class App extends Component {
     }
     return (
       <div className="container">
-        <div className="current-player">Player { this.props.currentPlayer + 1 }</div>
-        <HistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
-        <Stats players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
-        <CurrentScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
-        <CurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+        <div className="top">
+          <HistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
+          <Stats players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
+          <CurrentScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+          <CurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+        </div>
         <Players players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
         <ScoreInput />
       </div>
