@@ -37,6 +37,13 @@ ul {
           justify-content: center;
   margin-top: 25px;
 }
+.hint {
+  text-align: center;
+  font-size: 18px;
+}
+.hint span{
+  padding: 0 15px;
+}
 .current-round-list {
   display: inline-block;
   vertical-align: top;

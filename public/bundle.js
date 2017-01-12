@@ -69,7 +69,7 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _reducers = __webpack_require__(222);
+	var _reducers = __webpack_require__(223);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -21836,45 +21836,49 @@
 
 	var _stats2 = _interopRequireDefault(_stats);
 
-	var _currentScore = __webpack_require__(207);
+	var _hint = __webpack_require__(207);
+
+	var _hint2 = _interopRequireDefault(_hint);
+
+	var _currentScore = __webpack_require__(208);
 
 	var _currentScore2 = _interopRequireDefault(_currentScore);
 
-	var _currentRound = __webpack_require__(208);
+	var _currentRound = __webpack_require__(209);
 
 	var _currentRound2 = _interopRequireDefault(_currentRound);
 
-	var _historyScore = __webpack_require__(209);
+	var _historyScore = __webpack_require__(210);
 
 	var _historyScore2 = _interopRequireDefault(_historyScore);
 
-	var _scoreInput = __webpack_require__(210);
+	var _scoreInput = __webpack_require__(211);
 
 	var _scoreInput2 = _interopRequireDefault(_scoreInput);
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _players3 = __webpack_require__(213);
+	var _players3 = __webpack_require__(214);
 
 	var _players4 = _interopRequireDefault(_players3);
 
-	var _stats3 = __webpack_require__(215);
+	var _stats3 = __webpack_require__(216);
 
 	var _stats4 = _interopRequireDefault(_stats3);
 
-	var _scoreBoard = __webpack_require__(216);
+	var _scoreBoard = __webpack_require__(217);
 
 	var _scoreBoard2 = _interopRequireDefault(_scoreBoard);
 
-	var _currentRound3 = __webpack_require__(219);
+	var _currentRound3 = __webpack_require__(220);
 
 	var _currentRound4 = _interopRequireDefault(_currentRound3);
 
-	var _historyScore3 = __webpack_require__(220);
+	var _historyScore3 = __webpack_require__(221);
 
 	var _historyScore4 = _interopRequireDefault(_historyScore3);
 
-	var _scoreInput3 = __webpack_require__(221);
+	var _scoreInput3 = __webpack_require__(222);
 
 	var _scoreInput4 = _interopRequireDefault(_scoreInput3);
 
@@ -21906,6 +21910,7 @@
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'container' },
+	          _react2.default.createElement('h1', null),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'top' },
@@ -21920,6 +21925,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container' },
+	        _react2.default.createElement(_hint2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'top' },
@@ -22243,6 +22249,12 @@
 	    }
 	    var firstLetter = symbol[0];
 	    var num = +symbol.slice(1);
+	    if (symbol === '-') {
+	      return symbol;
+	    }
+	    if (symbol === 'bull') {
+	      return 'Bull';
+	    }
 	    if (num === 0) {
 	      return 'Miss';
 	    }
@@ -22321,6 +22333,192 @@
 	          break;
 	      }
 	    }
+	  },
+	  getHintMaster: function getHintMaster(score) {
+	    if (!this.closeMapMaster[score]) {
+	      return ['-', '-', '-'];
+	    }
+	    return this.closeMapMaster[score];
+	  },
+	  closeMapMaster: {
+	    "180": ['t20', 't20', 't20'],
+	    "177": ['t20', 't20', 't19'],
+	    "174": ['t20', 't19', 't19'],
+	    "171": ['t19', 't19', 't19'],
+	    "170": ['t20', 't20', 'bull'],
+	    "168": ['t19', 't19', 't19'],
+	    "167": ['t20', 't19', 'bull'],
+	    "165": ['t20', 't20', 't15'],
+	    "164": ['t20', 't18', 'bull'],
+	    "162": ['t20', 't20', 't14'],
+	    "161": ['t20', 't17', 'bull'],
+	    "160": ['t20', 'bull', 'bull'],
+	    "158": ['t20', 't16', 'bull'],
+	    "157": ['t19', 'bull', 'bull'],
+	    "155": ['t20', 't15', 'bull'],
+	    "154": ['t18', 'bull', 'bull'],
+	    "153": ['t17', 't17', 't17'],
+	    "152": ['t20', 't14', 'bull'],
+	    "151": ['t17', 'bull', 'bull'],
+	    "150": ['bull', 'bull', 'bull'],
+	    "149": ['t20', 't13', 'bull'],
+	    "148": ['t16', 'bull', 'bull'],
+	    "147": ['t19', 'd20', 'bull'],
+	    "146": ['d13', 't20', 't20'],
+	    "145": ['t15', 'bull', 'bull'],
+	    "144": ['t19', 't19', 'd15'],
+	    "143": ['t11', 't20', 'bull'],
+	    "142": ['t14', 'bull', 'bull'],
+	    "141": ['t17', 'd20', 'bull'],
+	    "140": ['t20', 's20', 'bull'],
+	    "139": ['t20', 's19', 't20'],
+	    "138": ['t20', 's18', 't20'],
+	    "137": ['t20', 's17', 't20'],
+	    "136": ['t20', 's16', 't20'],
+	    "135": ['t20', 's15', 't20'],
+	    "134": ['t20', 's14', 't20'],
+	    "133": ['t20', 's13', 't20'],
+	    "132": ['t20', 's12', 't20'],
+	    "131": ['t20', 's11', 't20'],
+	    "130": ['t20', 's20', 'bull'],
+	    "129": ['t20', 's19', 'bull'],
+	    "128": ['t20', 's18', 'bull'],
+	    "127": ['t20', 's17', 'bull'],
+	    "126": ['t20', 's16', 'bull'],
+	    "125": ['t20', 's15', 'bull'],
+	    "124": ['t20', 's14', 'bull'],
+	    "123": ['t20', 's14', 'bull'],
+	    "122": ['t20', 's13', 'bull'],
+	    "121": ['t20', 's11', 'bull'],
+	    "120": ['s20', 'bull', 'bull'],
+	    "119": ['s19', 'bull', 'bull'],
+	    "118": ['s18', 'bull', 'bull'],
+	    "116": ['s16', 'bull', 'bull'],
+	    "117": ['s17', 'bull', 'bull'],
+	    "115": ['s15', 'bull', 'bull'],
+	    "114": ['s14', 'bull', 'bull'],
+	    "113": ['s13', 'bull', 'bull'],
+	    "112": ['s12', 'bull', 'bull'],
+	    "111": ['s11', 'bull', 'bull'],
+	    "110": ['s10', 'bull', 'bull'],
+	    "109": ['s9', 'bull', 'bull'],
+	    "108": ['s8', 'bull', 'bull'],
+	    "107": ['s7', 'bull', 'bull'],
+	    "106": ['s6', 'bull', 'bull'],
+	    "105": ['s5', 'bull', 'bull'],
+	    "104": ['s4', 'bull', 'bull'],
+	    "103": ['s3', 'bull', 'bull'],
+	    "102": ['s2', 'bull', 'bull'],
+	    "101": ['s1', 'bull', 'bull'],
+	    "100": ['bull', 'bull', '-'],
+	    "99": ['s19', 'd15', 'bull'],
+	    "98": ['s18', 'd15', 'bull'],
+	    "97": ['s17', 'd15', 'bull'],
+	    "96": ['s16', 'd15', 'bull'],
+	    "95": ['s15', 'd15', 'bull'],
+	    "94": ['s14', 'd15', 'bull'],
+	    "93": ['s13', 'd15', 'bull'],
+	    "92": ['s12', 'd15', 'bull'],
+	    "91": ['s11', 'd15', 'bull'],
+	    "90": ['d20', 'bull', '-'],
+
+	    "89": ['s19', 's20', 'bull'],
+	    "88": ['s18', 's20', 'bull'],
+	    "87": ['s17', 's20', 'bull'],
+	    "86": ['s16', 's20', 'bull'],
+	    "85": ['s15', 's20', 'bull'],
+	    "84": ['s14', 's20', 'bull'],
+	    "83": ['s13', 's20', 'bull'],
+	    "82": ['bull', 'd16', '-'],
+	    "81": ['s11', 's20', 'bull'],
+	    "80": ['s10', 's20', 'bull'],
+
+	    "79": ['s19', 't20', '-'],
+	    "78": ['d19', 'd20', '-'],
+	    "77": ['s7', 's20', 'bull'],
+	    "76": ['s16', 't20', '-'],
+	    "75": ['s5', 's20', 'bull'],
+	    "74": ['s14', 't20', '-'],
+	    "73": ['s13', 's20', '-'],
+	    "72": ['s12', 's20', '-'],
+	    "71": ['s11', 's20', '-'],
+	    "70": ['s20', 'bull', '-'],
+
+	    "69": ['s19', 'bull', '-'],
+	    "68": ['s18', 'bull', '-'],
+	    "67": ['s17', 'bull', '-'],
+	    "66": ['s16', 'bull', '-'],
+	    "65": ['s15', 'bull', '-'],
+	    "64": ['s14', 'bull', '-'],
+	    "63": ['s13', 'bull', '-'],
+	    "62": ['s12', 'bull', '-'],
+	    "61": ['s11', 'bull', '-'],
+
+	    "60": ['t20', '-', '-'],
+	    "59": ['s9', 'bull', '-'],
+	    "58": ['s8', 'bull', '-'],
+	    "57": ['t19', '-', '-'],
+	    "56": ['s6', 'bull', '-'],
+	    "55": ['s5', 'bull', '-'],
+	    "54": ['t18', '-', '-'],
+	    "53": ['s3', 'bull', '-'],
+	    "52": ['s2', 'bull', '-'],
+	    "51": ['t17', '-', '-'],
+	    "50": ['bull', '-', '-'],
+
+	    "49": ['s17', 'd16', '-'],
+	    "48": ['s16', 'd16', '-'],
+	    "47": ['s15', 'd16', '-'],
+	    "46": ['s14', 'd16', '-'],
+	    "45": ['t15', '-', '-'],
+	    "44": ['s12', 'd16', '-'],
+	    "43": ['s11', 'd16', '-'],
+	    "42": ['t14', '-', '-'],
+	    "41": ['s9', 'd16', '-'],
+
+	    "40": ['d20', '-', '-'],
+	    "39": ['s7', 'd16', '-'],
+	    "38": ['d19', '-', '-'],
+	    "37": ['s5', 'd16', '-'],
+	    "36": ['d18', '-', '-'],
+	    "35": ['s3', 'd16', '-'],
+	    "34": ['d17', '-', '-'],
+	    "33": ['t33', '-', '-'],
+	    "32": ['d16', '-', '-'],
+	    "31": ['s1', 'd15', '-'],
+
+	    "30": ['d15', '-', '-'],
+	    "29": ['s9', 'd10', '-'],
+	    "28": ['d14', '-', '-'],
+	    "27": ['t9', '-', '-'],
+	    "26": ['d13', '-', '-'],
+	    "25": ['s5', 'd10', '-'],
+	    "24": ['d12', '-', '-'],
+	    "23": ['s3', 'd10', '-'],
+	    "22": ['d11', '-', '-'],
+	    "21": ['t21', '-', '-'],
+	    "20": ['d10', '-', '-'],
+
+	    "19": ['s3', 'd8', '-'],
+	    "18": ['d9', '-', '-'],
+	    "17": ['s1', 'd8', '-'],
+	    "16": ['d8', '-', '-'],
+	    "15": ['t5', '-', '-'],
+	    "14": ['d7', '-', '-'],
+	    "13": ['s1', 'd6', '-'],
+	    "12": ['d6', '-', '-'],
+	    "11": ['s1', 'd5', '-'],
+	    "10": ['d5', '-', '-'],
+
+	    "9": ['t3', '-', '-'],
+	    "8": ['d4', '-', '-'],
+	    "7": ['s1', 'd3', '-'],
+	    "6": ['d3', '-', '-'],
+	    "5": ['s1', 'd2', '-'],
+	    "4": ['d2', '-', '-'],
+	    "3": ['t1', '-', '-'],
+	    "2": ['d1', '-', '-'],
+	    "1": ['-', '-', '-']
 	  }
 	};
 
@@ -27407,6 +27605,54 @@
 	  if (!player) {
 	    return _react2.default.createElement(
 	      'div',
+	      { className: 'hint' },
+	      '---'
+	    );
+	  }
+	  var records = player.get('records');
+	  var hintArr = _helper2.default.getHintMaster(gameStatus.get('type') - _helper2.default.recordsToSum(records));
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'hint' },
+	    hintArr.map(function (hint) {
+	      return _react2.default.createElement(
+	        'span',
+	        null,
+	        _helper2.default.symbolToString(hint)
+	      );
+	    })
+	  );
+	};
+
+/***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _helper = __webpack_require__(204);
+
+	var _helper2 = _interopRequireDefault(_helper);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (_ref) {
+	  var players = _ref.players,
+	      currentPlayer = _ref.currentPlayer,
+	      gameStatus = _ref.gameStatus;
+
+	  var player = players.get(currentPlayer);
+	  if (!player) {
+	    return _react2.default.createElement(
+	      'div',
 	      { className: 'current-score' },
 	      '+'
 	    );
@@ -27420,7 +27666,7 @@
 	};
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27483,7 +27729,7 @@
 	};
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27527,7 +27773,7 @@
 	    players.get(currentPlayer).get('records').map(function (round, idx) {
 	      var sum = round.reduce(function (pre, cur) {
 	        return pre + _helper2.default.symbolToNum(cur);
-	      }, 0);sum = isNaN(sum) ? '爆了' : sum;return _react2.default.createElement(
+	      }, 0);sum = isNaN(sum) ? '呵呵' : sum;return _react2.default.createElement(
 	        'li',
 	        { key: idx, className: (0, _classname2.default)({ fontRed: sum > 100 }) },
 	        sum
@@ -27537,7 +27783,7 @@
 	};
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27554,7 +27800,7 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _actions = __webpack_require__(211);
+	var _actions = __webpack_require__(212);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -27819,7 +28065,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(App);
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27835,7 +28081,7 @@
 	exports.setGame = setGame;
 	exports.burst = burst;
 
-	var _types = __webpack_require__(212);
+	var _types = __webpack_require__(213);
 
 	var types = _interopRequireWildcard(_types);
 
@@ -27899,7 +28145,7 @@
 	}
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27918,7 +28164,7 @@
 	var UPDATE_DART = exports.UPDATE_DART = 'update_dart';
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27931,7 +28177,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _player = __webpack_require__(214);
+	var _player = __webpack_require__(215);
 
 	var _player2 = _interopRequireDefault(_player);
 
@@ -27965,7 +28211,7 @@
 	};
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28012,7 +28258,7 @@
 	};
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28080,7 +28326,7 @@
 	};
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28097,7 +28343,7 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
-	var _scoreBoardPlayer = __webpack_require__(217);
+	var _scoreBoardPlayer = __webpack_require__(218);
 
 	var _scoreBoardPlayer2 = _interopRequireDefault(_scoreBoardPlayer);
 
@@ -28287,7 +28533,7 @@
 	};
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28304,7 +28550,7 @@
 
 	var _classname2 = _interopRequireDefault(_classname);
 
-	var _scoreBoardCount = __webpack_require__(218);
+	var _scoreBoardCount = __webpack_require__(219);
 
 	var _scoreBoardCount2 = _interopRequireDefault(_scoreBoardCount);
 
@@ -28345,7 +28591,7 @@
 	};
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28400,7 +28646,7 @@
 	};
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28459,7 +28705,7 @@
 	};
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28514,7 +28760,7 @@
 	};
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28531,7 +28777,7 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _actions = __webpack_require__(211);
+	var _actions = __webpack_require__(212);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -28806,7 +29052,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(App);
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28817,15 +29063,15 @@
 
 	var _redux = __webpack_require__(167);
 
-	var _player_reducer = __webpack_require__(223);
+	var _player_reducer = __webpack_require__(224);
 
 	var _player_reducer2 = _interopRequireDefault(_player_reducer);
 
-	var _game_status_reducer = __webpack_require__(224);
+	var _game_status_reducer = __webpack_require__(225);
 
 	var _game_status_reducer2 = _interopRequireDefault(_game_status_reducer);
 
-	var _current_player_reducer = __webpack_require__(225);
+	var _current_player_reducer = __webpack_require__(226);
 
 	var _current_player_reducer2 = _interopRequireDefault(_current_player_reducer);
 
@@ -28840,7 +29086,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28886,7 +29132,7 @@
 	  }
 	};
 
-	var _types = __webpack_require__(212);
+	var _types = __webpack_require__(213);
 
 	var types = _interopRequireWildcard(_types);
 
@@ -28950,7 +29196,7 @@
 	}
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28984,7 +29230,7 @@
 	  }
 	};
 
-	var _types = __webpack_require__(212);
+	var _types = __webpack_require__(213);
 
 	var types = _interopRequireWildcard(_types);
 
@@ -29002,7 +29248,7 @@
 	var initialState = Map({ currentRound: 0, status: 0, type: 501, playing: false, currentDart: 0 });
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29030,7 +29276,7 @@
 	  }
 	};
 
-	var _types = __webpack_require__(212);
+	var _types = __webpack_require__(213);
 
 	var types = _interopRequireWildcard(_types);
 

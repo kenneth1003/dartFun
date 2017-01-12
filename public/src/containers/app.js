@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Players from '../components/players';
 import Stats from '../components/stats/stats';
+import Hint from '../components/hint';
 // import Result from '../components/result/result';
 import CurrentScore from '../components/currentScore';
 import CurrentRound from '../components/currentRound';
@@ -22,6 +23,7 @@ class App extends Component {
     if(this.props.gameStatus.get('type') === 'criket') {
       return (
         <div className="container">
+          <h1></h1>
           <div className="top">
             <CriketHistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
             <CriketScoreBoard players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
@@ -34,6 +36,7 @@ class App extends Component {
     }
     return (
       <div className="container">
+        <Hint players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
         <div className="top">
           <HistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
           <Stats players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
