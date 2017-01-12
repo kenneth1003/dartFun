@@ -5,6 +5,9 @@ import cx from 'classname';
 import helper from '../helper';
 import audio from '../resource_entry/audio';
 
+import { ActionCreators } from 'redux-undo';
+import store from '../store';
+
 let scoreArr = [];
  for(let i = 1; i <= 20; i++ ){
   scoreArr.push(i);          
@@ -59,6 +62,12 @@ class App extends Component {
       // }, 3000)
     }
   }
+  handleUndo() {
+    store.dispatch(ActionCreators.undo());
+    if(round > 0) { round--; return}
+    round = 3;
+
+  }
   handleReset() {
     var shouldReset = confirm('確定要重來?');
     if (shouldReset) {
@@ -74,11 +83,12 @@ class App extends Component {
   }
   renderScoreBtn() {
     const gameType = this.props.gameStatus.get('type');
-    console.log( this.props.gameStatus.get('playing') )
+    console.log( ActionCreators.undo())
     return (
       <ul className="score-btn-list">
         <li onClick={ this.props.addPlayer } className={cx({ 'font-red': true, hidden: this.props.gameStatus.get('playing') })}><button>新增玩家</button></li>
         <li onClick={ this.handleReset.bind(this) }><button>RESET</button></li>
+        <li onClick={ this.handleUndo.bind(this) }><button>UNDO</button></li>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <li className={ cx({ hidden: this.props.gameStatus.get('playing') }) } style={ {textAlign: 'right'}}>種類：</li>
         <li className={ cx({ active: gameType === 301, hidden: this.props.gameStatus.get('playing') }) } onClick={ this.props.setGame.bind(null, 301) }><button>301</button></li>
@@ -109,9 +119,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    players:  state.players,
-    gameStatus:  state.gameStatus,
-    currentPlayer:  state.currentPlayer
+    players:  state.players.present,
+    gameStatus:  state.gameStatus.present,
+    currentPlayer:  state.currentPlayer.present
   }
 }
 

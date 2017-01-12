@@ -83,9 +83,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    players:  state.players,
-    gameStatus:  state.gameStatus,
-    currentPlayer:  state.currentPlayer
+    players:  state.players.present.present,
+    gameStatus:  state.gameStatus.present,
+    currentPlayer:  state.currentPlayer.present
   }
 }
 
