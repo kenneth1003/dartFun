@@ -53,6 +53,8 @@ let Helper =  {
     var num = +symbol.slice(1);
     if(symbol === '-'  ){ return symbol }
     if(symbol === 'bull'  ){ return 'Bull' }
+    if(symbol === 'd25'  ){ return 'D-Bull' }
+    if(symbol === 's25'  ){ return 'S-Bull' }
     if(num === 0) { return 'Miss' }
     switch (firstLetter) {
       case 's':
@@ -104,6 +106,34 @@ let Helper =  {
       {count:0, name:"bull"}
     ]);
     return List(result);
+  },
+
+  handleScorePlaying: function (score, audio) {
+  const firstLetter = score[0];
+    switch (score) {
+      case 'd25':
+        audio.playDBull();
+        return;
+      case 's25':
+        audio.playSBull();
+        return;
+      case 's0':
+        audio.playMiss();
+        return;
+      default:
+        break;
+    };
+    switch (firstLetter) {
+      case 's':
+        audio.playSingle();
+        break;
+      case 'd':
+        audio.playDouble();
+        break;
+      default:
+        audio.playTriple();
+        break;
+    }
   },
 
   nextPlayer(sum, player) {

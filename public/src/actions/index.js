@@ -30,7 +30,12 @@ export function undoScore () {
   }
 }
 
-
+export function changeAudio(key) {
+  return {
+    type: types.CHANGE_AUDIO,
+    payload: key
+  }
+}
 
 
 export function reset () {

@@ -117,9 +117,28 @@ ul {
   font-size: 32px;
   width: 100%;
 }
-.score-btn-list {
-  border-top: 1px solid #999;
+.setting-list {
   margin-top: 30px;
+  padding: 15px;
+  margin: 0 auto;
+  text-align: center;  
+}
+.setting-list li {
+  display: inline-block;
+  margin: 4px;
+  padding: 4px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.setting-list li.active {
+  background-color: #ccc;
+}
+
+.score-btn-list {
   padding: 15px;
   width: 60%;
   margin: 0 auto;
@@ -136,9 +155,7 @@ ul {
   transition: all .15s;
   white-space: nowrap;
 }
-.score-btn-list li.active {
-  background-color: #eee;
-}
+
 .score-btn-list li button{
   cursor: pointer;
   font-size: 16px; 
@@ -157,7 +174,31 @@ ul {
   transform: translateY(-1px);
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 }
+
+.total-list {
+  display: flex;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
 }
+.total-list__player {
+  background-color: #f5f5f5;
+  text-align: center;
+  margin: 5px;
+}
+
+.total-list__round {
+}
+.total-list span{
+  width: 40px;
+}
+
+.total-list__score {
+  display: inline-block;
+  padding: 0 2px;
+}
+
 .btn-special {
   background-color: #ccc;
 }
@@ -273,4 +314,48 @@ ul {
   .w40 {
     width: 28px;
   }
+}
+.next-player-mask {
+  color: #666;
+  display: flex;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  font-size: 60px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.3);
+  animation: nextPlayer 3s ease-in-out;
+}
+@keyframes nextPlayer {
+  0% {opacity: 0.5; transform: translateY(0)}
+  30% {opacity: 1; transform: translateY(0)}
+  50% {opacity: 0.5; transform: translateY(0)}
+  80% {opacity: 1; transform: translateY(0)}
+  100% {opacity: 0; transform: translateY(-1000px)}
+}
+
+.example-enter {
+  opacity: 0.01;
+  width: 0px;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  width: 80px;
+  transition: 700ms;
+}
+
+.example-leave {
+  opacity: 1;
+  width: 200px;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  width: 0px;
+  transition: 700ms;
 }

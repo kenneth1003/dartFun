@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Players from '../components/players';
 import Stats from '../components/stats';
 import Hint from '../components/hint';
+import TotalStat from '../components/common/total_stats';
 // import Result from '../components/result/result';
 import CurrentScore from '../components/current_score';
 import CurrentRound from '../components/current_round';
@@ -50,6 +51,7 @@ class App extends Component {
   }
 }
 
+//<TotalStat players={ this.props.players } />
 function mapStateToProps(state) {
   return {
     players:  state.players.present,

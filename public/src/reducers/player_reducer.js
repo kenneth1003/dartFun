@@ -5,14 +5,27 @@ import immutable from 'immutable';
 
 const { Map, List } = immutable;
 
-const initialState = List([]);
+const list = List([]);
+const initialState = list.push(Map({
+  sum: 501,
+  records: List([List([0,0,0])]),
+  criketInfo: Map({ score: 0, 
+  counts: List([
+    Map({count:0, name: "15"}),
+    Map({count:0, name: "16"}),
+    Map({count:0, name: "17"}),
+    Map({count:0, name: "18"}),
+    Map({count:0, name: "19"}),
+    Map({count:0, name: "20"}),
+    Map({count:0, name: "bull"})]) })
+}));
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.ADD_PLAYER:
       return state.push(Map({
         sum: 501,
-        records: List([List([0,0,0])]),
+        records: List([]),
         criketInfo: Map({ score: 0, counts: List([
           Map({count:0, name: "15"}),
           Map({count:0, name: "16"}),
@@ -33,10 +46,10 @@ export default function(state = initialState, action) {
       const cr = action.payload.currentRound;
       return state.setIn([cp, 'records' ,cr], List([0,0,0, 'burst0']));
 
-
     case types.UPDATE_ROUND:
-      const np = helper.nextPlayer(state.size, +action.payload.currentPlayer);
+      const np = +action.payload.currentPlayer;
       return state.setIn([np, 'records'], state.get(np).get('records').push(List([0,0,0])));
+
     case types.RESET:
       return initialState;
     default:

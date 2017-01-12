@@ -7,3 +7,4 @@ export const SET_GAME_STATUS = 'set_game_status';
 export const SET_GAME = 'set_game';
 export const BURST = 'burst';
 export const UPDATE_DART = 'update_dart';
+export const CHANGE_AUDIO = 'change_audio';
