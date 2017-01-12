@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import Players from '../components/players';
-import Stats from '../components/stats/stats';
+import Stats from '../components/stats';
 import Hint from '../components/hint';
 // import Result from '../components/result/result';
-import CurrentScore from '../components/currentScore';
-import CurrentRound from '../components/currentRound';
-import HistoryScore from '../components/historyScore';
-import ScoreInput from './scoreInput';
+import CurrentScore from '../components/current_score';
+import CurrentRound from '../components/current_round';
+import HistoryScore from '../components/history_score';
+import ScoreInput from './score_input';
 import { connect } from 'react-redux';
 
-import CriketPlayers from '../components/criket//players';
+import CriketPlayers from '../components/criket/players';
 import CriketStats from '../components/criket/stats';
 // import Result from '../components/criket/result';
-import CriketScoreBoard from '../components/criket/scoreBoard';
-import CriketCurrentRound from '../components/criket/currentRound';
-import CriketHistoryScore from '../components/criket/historyScore';
-import CriketScoreInput from './criket/scoreInput';
+import CriketScoreBoard from '../components/criket/score_board';
+import CriketCurrentRound from '../components/criket/current_round';
+import CriketHistoryScore from '../components/criket/history_score';
+import CriketScoreInput from './criket/score_input';
 
 
 class App extends Component {

@@ -6,7 +6,7 @@ export default ({ players, currentPlayer, gameStatus }) => {
   if(!player) { return <div className="current-score">+</div> }
   const records = player.get('records');
   return (
-   <div className="current-score">{ gameStatus.get('type') - helper.recordsToSum(records) }</div>
+    <div className="current-score">{ gameStatus.get('type') - helper.recordsToSum(records) }</div>
   )
 }
 

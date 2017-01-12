@@ -69,7 +69,7 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _reducers = __webpack_require__(223);
+	var _reducers = __webpack_require__(224);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -21840,47 +21840,47 @@
 
 	var _hint2 = _interopRequireDefault(_hint);
 
-	var _currentScore = __webpack_require__(208);
+	var _current_score = __webpack_require__(208);
 
-	var _currentScore2 = _interopRequireDefault(_currentScore);
+	var _current_score2 = _interopRequireDefault(_current_score);
 
-	var _currentRound = __webpack_require__(209);
+	var _current_round = __webpack_require__(209);
 
-	var _currentRound2 = _interopRequireDefault(_currentRound);
+	var _current_round2 = _interopRequireDefault(_current_round);
 
-	var _historyScore = __webpack_require__(210);
+	var _history_score = __webpack_require__(210);
 
-	var _historyScore2 = _interopRequireDefault(_historyScore);
+	var _history_score2 = _interopRequireDefault(_history_score);
 
-	var _scoreInput = __webpack_require__(211);
+	var _score_input = __webpack_require__(211);
 
-	var _scoreInput2 = _interopRequireDefault(_scoreInput);
+	var _score_input2 = _interopRequireDefault(_score_input);
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _players3 = __webpack_require__(214);
+	var _players3 = __webpack_require__(215);
 
 	var _players4 = _interopRequireDefault(_players3);
 
-	var _stats3 = __webpack_require__(216);
+	var _stats3 = __webpack_require__(217);
 
 	var _stats4 = _interopRequireDefault(_stats3);
 
-	var _scoreBoard = __webpack_require__(217);
+	var _score_board = __webpack_require__(218);
 
-	var _scoreBoard2 = _interopRequireDefault(_scoreBoard);
+	var _score_board2 = _interopRequireDefault(_score_board);
 
-	var _currentRound3 = __webpack_require__(220);
+	var _current_round3 = __webpack_require__(221);
 
-	var _currentRound4 = _interopRequireDefault(_currentRound3);
+	var _current_round4 = _interopRequireDefault(_current_round3);
 
-	var _historyScore3 = __webpack_require__(221);
+	var _history_score3 = __webpack_require__(222);
 
-	var _historyScore4 = _interopRequireDefault(_historyScore3);
+	var _history_score4 = _interopRequireDefault(_history_score3);
 
-	var _scoreInput3 = __webpack_require__(222);
+	var _score_input3 = __webpack_require__(223);
 
-	var _scoreInput4 = _interopRequireDefault(_scoreInput3);
+	var _score_input4 = _interopRequireDefault(_score_input3);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21914,12 +21914,12 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'top' },
-	            _react2.default.createElement(_historyScore4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
-	            _react2.default.createElement(_scoreBoard2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	            _react2.default.createElement(_currentRound4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
+	            _react2.default.createElement(_history_score4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
+	            _react2.default.createElement(_score_board2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	            _react2.default.createElement(_current_round4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
 	          ),
 	          _react2.default.createElement(_players4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_scoreInput4.default, null)
+	          _react2.default.createElement(_score_input4.default, null)
 	        );
 	      }
 	      return _react2.default.createElement(
@@ -21929,13 +21929,13 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'top' },
-	          _react2.default.createElement(_historyScore2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
+	          _react2.default.createElement(_history_score2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
 	          _react2.default.createElement(_stats2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_currentScore2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_currentRound2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
+	          _react2.default.createElement(_current_score2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	          _react2.default.createElement(_current_round2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
 	        ),
 	        _react2.default.createElement(_players2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	        _react2.default.createElement(_scoreInput2.default, null)
+	        _react2.default.createElement(_score_input2.default, null)
 	      );
 	    }
 	  }]);
@@ -22189,35 +22189,36 @@
 	var _immutable = __webpack_require__(205);
 
 	var Helper = {
+
+	  sum3Darts: function sum3Darts(list) {
+	    return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
+	    function symbolToNum(symbol) {
+	      if (typeof symbol === 'number') {
+	        return symbol;
+	      }
+	      var firstLetter = symbol[0];
+	      var num = +symbol.slice(1);
+	      switch (firstLetter) {
+	        case 's':
+	          return num;
+	        case 'd':
+	          return num * 2;
+	        case 't':
+	          return num * 3;
+	        default:
+	          break;
+	      }
+	    }
+	  },
+
 	  recordsToSum: function recordsToSum(records) {
-	    var rtn = records.reduce(function (pre, cur) {
+	    var _this = this;
+	    return records.reduce(function (pre, cur) {
 	      var sum = 0;
-	      sum = sum3Darts(cur);
+	      sum = _this.sum3Darts.bind(_this)(cur);
 	      pre += sum;
 	      return pre;
 	    }, 0);
-	    return rtn;
-
-	    function sum3Darts(list) {
-	      return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
-	      function symbolToNum(symbol) {
-	        if (typeof symbol === 'number') {
-	          return symbol;
-	        }
-	        var firstLetter = symbol[0];
-	        var num = +symbol.slice(1);
-	        switch (firstLetter) {
-	          case 's':
-	            return num;
-	          case 'd':
-	            return num * 2;
-	          case 't':
-	            return num * 3;
-	          default:
-	            break;
-	        }
-	      }
-	    }
 	  },
 
 	  symbolToNum: function symbolToNum(symbol) {
@@ -22234,14 +22235,9 @@
 	      case 't':
 	        return num * 3;
 	      default:
-	        // statements_def
 	        break;
 	    }
 	  },
-
-	  greaterThan15: function greaterThan15() {},
-
-	  symbolToCount: function symbolToCount() {},
 
 	  symbolToString: function symbolToString(symbol) {
 	    if (typeof symbol === 'number') {
@@ -22266,7 +22262,6 @@
 	      case 't':
 	        return 'Triple ' + num;
 	      default:
-	        // statements_def
 	        break;
 	    }
 	  },
@@ -22287,12 +22282,11 @@
 	      case 't':
 	        return '3';
 	      default:
-	        // statements_def
 	        break;
 	    }
 	  },
 	  recordsToCounts: function recordsToCounts(records) {
-	    var _this = this;
+	    var _this2 = this;
 
 	    var result = records.reduce(function (pre, cur) {
 	      cur.forEach(function (dart) {
@@ -22304,36 +22298,25 @@
 	          return;
 	        }
 	        if (num === 25) {
-	          pre[6].count = pre[6].count + +_this.symboToCounts.bind(_this)(dart);
+	          pre[6].count = pre[6].count + +_this2.symboToCounts.bind(_this2)(dart);
 	          return;
 	        }
-	        pre[num - 15].count = pre[num - 15].count + +_this.symboToCounts.bind(_this)(dart);
+	        pre[num - 15].count = pre[num - 15].count + +_this2.symboToCounts.bind(_this2)(dart);
 	      });
 	      return pre;
 	    }, [{ count: 0, name: "15" }, { count: 0, name: "16" }, { count: 0, name: "17" }, { count: 0, name: "18" }, { count: 0, name: "19" }, { count: 0, name: "20" }, { count: 0, name: "bull" }]);
 	    return (0, _immutable.List)(result);
 	  },
 
-	  sum3Darts: function sum3Darts(list) {
-	    return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
-	    function symbolToNum(symbol) {
-	      if (typeof symbol === 'number') {
-	        return symbol;
-	      }
-	      var firstLetter = symbol[0];
-	      var num = symbol.slice(1);
-	      switch (firstLetter) {
-	        case 's':
-	          return num;
-	        case 'd':
-	          return num * 2;
-	        case 't':
-	          return num * 3;
-	        default:
-	          break;
-	      }
+	  nextPlayer: function nextPlayer(sum, player) {
+	    if (player + 1 >= sum) {
+	      return 0;
+	    } else {
+	      return player + 1;
 	    }
 	  },
+
+
 	  getHintMaster: function getHintMaster(score) {
 	    if (!this.closeMapMaster[score]) {
 	      return ['-', '-', '-'];
@@ -22431,7 +22414,7 @@
 	    "83": ['s13', 's20', 'bull'],
 	    "82": ['bull', 'd16', '-'],
 	    "81": ['s11', 's20', 'bull'],
-	    "80": ['s10', 's20', 'bull'],
+	    "80": ['d15', 'bull', '-'],
 
 	    "79": ['s19', 't20', '-'],
 	    "78": ['d19', 'd20', '-'],
@@ -22520,6 +22503,7 @@
 	    "2": ['d1', '-', '-'],
 	    "1": ['-', '-', '-']
 	  }
+
 	};
 
 	exports.default = Helper;
@@ -27528,7 +27512,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var avg = 0;
+	var avg = [];
 
 	exports.default = function (_ref) {
 	  var players = _ref.players,
@@ -27553,10 +27537,10 @@
 	      { className: 'stats' },
 	      '\u4E09\u6A19\u5E73\u5747:',
 	      _react2.default.createElement('br', null),
-	      avg
+	      avg[currentPlayer]
 	    );
 	  }
-	  avg = (numerator / denominator).toFixed(2);
+	  avg[currentPlayer] = (numerator / denominator).toFixed(2);
 	  if (!denominator) {
 	    return _react2.default.createElement(
 	      'div',
@@ -27572,7 +27556,7 @@
 	    '\u4E09\u6A19\u5E73\u5747: ',
 	    _react2.default.createElement('br', null),
 	    ' ',
-	    (numerator / denominator).toFixed(2)
+	    avg[currentPlayer]
 	  );
 	};
 
@@ -27812,6 +27796,10 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
+	var _audio = __webpack_require__(214);
+
+	var _audio2 = _interopRequireDefault(_audio);
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27828,6 +27816,16 @@
 	}
 	var round = 0;
 
+	function handleScorePlaying(score) {
+	  if (score === 'd25' || score === 's25') {
+	    return _audio2.default.playAudBullseye();
+	  }
+	  if (score === 's0') {
+	    return _audio2.default.playAudMiss();
+	  }
+	  return _audio2.default.playAudHit();
+	}
+
 	var App = function (_Component) {
 	  _inherits(App, _Component);
 
@@ -27843,30 +27841,42 @@
 	      if (this.props.players.size === 0) {
 	        alert('請先新增玩家');return;
 	      };
+
 	      var player = this.props.players.get(this.props.currentPlayer);
 	      var records = player.get('records');
 	      var totalScore = _helper2.default.recordsToSum(records);
 	      var judge = checkEndCondition(totalScore, _helper2.default.symbolToNum(num), this.props.gameStatus.get('type'));
 
 	      this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round);
+	      handleScorePlaying(num);
 
+	      if (!this.props.gameStatus.get('playing')) {
+	        _audio2.default.playAudGameStart();
+	      }
 	      if (judge === 1) {
-	        alert('player' + (this.props.currentPlayer + 1) + 'wins');
+	        _audio2.default.playAudVictory();alert('player' + (this.props.currentPlayer + 1) + 'wins');
 	      }
 	      if (judge === 2) {
+	        _audio2.default.playAudBust();
 	        this.props.burst(this.props.currentPlayer, this.props.gameStatus.get('currentRound'));
 	        round = 0;
 	        var allPlayer = this.props.players.size;
 	        var isNextRound = +this.props.currentPlayer == allPlayer - 1;
-	        this.props.updateRound(isNextRound, nextPlayer(this.props.players.size, this.props.currentPlayer));
+	        this.props.updateRound(isNextRound, _helper2.default.nextPlayer(this.props.players.size, this.props.currentPlayer));
 	        return;
 	      }
 	      round++;
 	      if (round >= 3) {
-	        round = 0;
 	        var _allPlayer = this.props.players.size;
 	        var _isNextRound = +this.props.currentPlayer == _allPlayer - 1;
-	        this.props.updateRound(_isNextRound, nextPlayer(this.props.players.size, this.props.currentPlayer));
+	        var currentPlayer = this.props.currentPlayer;
+	        var updateRound = this.props.updateRound;
+	        // setTimeout(function(){
+	        handleScorePlaying(num);
+	        _audio2.default.playAudChange();
+	        round = 0;
+	        updateRound(_isNextRound, _helper2.default.nextPlayer(_allPlayer, currentPlayer));
+	        // }, 3000)
 	      }
 	    }
 	  }, {
@@ -28042,13 +28052,6 @@
 	    currentPlayer: state.currentPlayer
 	  };
 	}
-	function nextPlayer(sum, player) {
-	  if (player + 1 >= sum) {
-	    return 0;
-	  } else {
-	    return player + 1;
-	  }
-	}
 
 	function checkEndCondition(point, currentShot, gameType) {
 	  if (point + currentShot < gameType) {
@@ -28165,6 +28168,48 @@
 
 /***/ },
 /* 214 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var audGameStart = document.getElementById("aud-gamestart");
+	var audHit = document.getElementById("aud-hit");
+	var audBullseye = document.getElementById("aud-bullseye");
+	var audMiss = document.getElementById("aud-miss");
+	var audBust = document.getElementById("aud-bust");
+	var audChange = document.getElementById("aud-change");
+	var audVictory = document.getElementById("aud-victory");
+	var audio = {
+	  playAudGameStart: function playAudGameStart() {
+	    audGameStart.play();
+	  },
+	  playAudHit: function playAudHit() {
+	    audHit.play();
+	  },
+	  playAudBullseye: function playAudBullseye() {
+	    audBullseye.play();
+	  },
+	  playAudMiss: function playAudMiss() {
+	    audMiss.play();
+	  },
+	  playAudBust: function playAudBust() {
+	    audBust.play();
+	  },
+	  playAudChange: function playAudChange() {
+	    audChange.play();
+	  },
+	  playAudVictory: function playAudVictory() {
+	    audVictory.play();
+	  }
+	};
+
+	exports.default = audio;
+
+/***/ },
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28177,7 +28222,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _player = __webpack_require__(215);
+	var _player = __webpack_require__(216);
 
 	var _player2 = _interopRequireDefault(_player);
 
@@ -28211,7 +28256,7 @@
 	};
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28258,7 +28303,7 @@
 	};
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28326,7 +28371,7 @@
 	};
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28343,9 +28388,9 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
-	var _scoreBoardPlayer = __webpack_require__(218);
+	var _score_board_player = __webpack_require__(219);
 
-	var _scoreBoardPlayer2 = _interopRequireDefault(_scoreBoardPlayer);
+	var _score_board_player2 = _interopRequireDefault(_score_board_player);
 
 	var _classname = __webpack_require__(203);
 
@@ -28527,13 +28572,13 @@
 	      )
 	    ),
 	    players.map(function (player, idx) {
-	      return _react2.default.createElement(_scoreBoardPlayer2.default, { type: gameStatus.get('type'), num: idx, key: idx, player: player, cp: currentPlayer });
+	      return _react2.default.createElement(_score_board_player2.default, { type: gameStatus.get('type'), num: idx, key: idx, player: player, cp: currentPlayer });
 	    })
 	  );
 	};
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28550,9 +28595,9 @@
 
 	var _classname2 = _interopRequireDefault(_classname);
 
-	var _scoreBoardCount = __webpack_require__(219);
+	var _score_board_count = __webpack_require__(220);
 
-	var _scoreBoardCount2 = _interopRequireDefault(_scoreBoardCount);
+	var _score_board_count2 = _interopRequireDefault(_score_board_count);
 
 	var _helper = __webpack_require__(204);
 
@@ -28583,7 +28628,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_scoreBoardCount2.default, { key: idx, count: reverseCounts.get(idx).get('count') }),
+	        _react2.default.createElement(_score_board_count2.default, { key: idx, count: reverseCounts.get(idx).get('count') }),
 	        _react2.default.createElement('br', null)
 	      );
 	    })
@@ -28591,7 +28636,7 @@
 	};
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28646,7 +28691,7 @@
 	};
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28705,7 +28750,7 @@
 	};
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28760,7 +28805,7 @@
 	};
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28828,7 +28873,7 @@
 	        round = 0;
 	        var allPlayer = this.props.players.size;
 	        var isNextRound = +this.props.currentPlayer == allPlayer - 1;
-	        this.props.updateRound(isNextRound, nextPlayer(this.props.players.size, this.props.currentPlayer));
+	        this.props.updateRound(isNextRound, _helper2.default.nextPlayer(this.props.players.size, this.props.currentPlayer));
 	      }
 	    }
 	  }, {
@@ -29029,30 +29074,11 @@
 	    currentPlayer: state.currentPlayer
 	  };
 	}
-	function nextPlayer(sum, player) {
-	  if (player + 1 >= sum) {
-	    return 0;
-	  } else {
-	    return player + 1;
-	  }
-	}
-
-	function checkEndCondition(point, currentShot, gameType) {
-	  if (point + currentShot < gameType) {
-	    return 0;
-	  }
-	  if (point + currentShot === gameType) {
-	    return 1;
-	  }
-	  if (point + currentShot > gameType) {
-	    return 2;
-	  }
-	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(App);
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29063,15 +29089,15 @@
 
 	var _redux = __webpack_require__(167);
 
-	var _player_reducer = __webpack_require__(224);
+	var _player_reducer = __webpack_require__(225);
 
 	var _player_reducer2 = _interopRequireDefault(_player_reducer);
 
-	var _game_status_reducer = __webpack_require__(225);
+	var _game_status_reducer = __webpack_require__(226);
 
 	var _game_status_reducer2 = _interopRequireDefault(_game_status_reducer);
 
-	var _current_player_reducer = __webpack_require__(226);
+	var _current_player_reducer = __webpack_require__(227);
 
 	var _current_player_reducer2 = _interopRequireDefault(_current_player_reducer);
 
@@ -29086,7 +29112,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29123,7 +29149,7 @@
 	      return state.setIn([cp, 'records', cr], List([0, 0, 0, 'burst0']));
 
 	    case types.UPDATE_ROUND:
-	      var np = nextPlayer(state.size, +action.payload.currentPlayer);
+	      var np = _helper2.default.nextPlayer(state.size, +action.payload.currentPlayer);
 	      return state.setIn([np, 'records'], state.get(np).get('records').push(List([0, 0, 0])));
 	    case types.RESET:
 	      return initialState;
@@ -29153,14 +29179,6 @@
 
 
 	var initialState = List([]);
-
-	function nextPlayer(sum, player) {
-	  if (player + 1 >= sum) {
-	    return 0;
-	  } else {
-	    return player + 1;
-	  }
-	}
 
 	function criketScoreCount(symbol, state, currentPlayer) {
 	  if (typeof dart === 'number') {
@@ -29196,7 +29214,7 @@
 	}
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29248,7 +29266,7 @@
 	var initialState = Map({ currentRound: 0, status: 0, type: 501, playing: false, currentDart: 0 });
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

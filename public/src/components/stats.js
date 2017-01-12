@@ -1,5 +1,5 @@
 import React from 'react';
-import helper from '../../helper'
+import helper from '../helper'
 let avg = [];
 export default ({ players, currentPlayer, gameStatus }) => {
   const player = players.get(currentPlayer);

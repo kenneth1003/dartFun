@@ -89,11 +89,6 @@ function mapStateToProps(state) {
   }
 }
 
-function checkEndCondition(point, currentShot, gameType) {
-  if(point + currentShot < gameType) { return 0 }
-  if(point + currentShot === gameType) { return 1 }
-  if(point + currentShot > gameType) { return 2 }
-}
 
 
 export default connect(mapStateToProps, actions)(App);

@@ -1,6 +1,6 @@
 import React from 'react';
 import helper from '../../helper';
-import Player from './scoreBoardPlayer';
+import Player from './score_board_player';
 import cx from 'classname';
 
 export default ({ players, currentPlayer, gameStatus }) => {

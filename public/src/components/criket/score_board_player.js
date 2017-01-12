@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classname';
-import Count from './scoreBoardCount';
+import Count from './score_board_count';
 import helper from '../../helper';
 
 
