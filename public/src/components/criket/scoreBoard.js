@@ -5,7 +5,32 @@ import cx from 'classname';
 
 export default ({ players, currentPlayer, gameStatus }) => {
   const player = players.get(currentPlayer);
-  if(!player) { return <div className="current-score">+</div> }
+  if(!player) { return (<ul className="criket-score-board">
+    <li className="player">
+      <span>&nbsp;</span>
+      <div>
+        <div className={cx({ player: true })}>Bull</div><br/>
+      </div>
+      <div>
+        <div className={cx({ player: true })}>20</div><br/>
+      </div>
+      <div>
+        <div className={cx({ player: true })}>19</div><br/>
+      </div>
+      <div>
+        <div className={cx({ player: true })}>18</div><br/>
+      </div>
+      <div>
+        <div className={cx({ player: true })}>17</div><br/>
+      </div>
+      <div>
+        <div className={cx({ player: true })}>16</div><br/>
+      </div>
+      <div>
+        <div className={cx({ player: true })}>15</div><br/>
+      </div>
+    </li>
+  </ul>) }
   return (
    <ul className="criket-score-board">
       <li className="player">

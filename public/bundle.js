@@ -27527,7 +27527,7 @@
 	    players.get(currentPlayer).get('records').map(function (round, idx) {
 	      var sum = round.reduce(function (pre, cur) {
 	        return pre + _helper2.default.symbolToNum(cur);
-	      }, 0);sum = isNaN(sum) ? 'burst' : sum;return _react2.default.createElement(
+	      }, 0);sum = isNaN(sum) ? '爆了' : sum;return _react2.default.createElement(
 	        'li',
 	        { key: idx, className: (0, _classname2.default)({ fontRed: sum > 100 }) },
 	        sum
@@ -27646,6 +27646,7 @@
 	      var _this2 = this;
 
 	      var gameType = this.props.gameStatus.get('type');
+	      console.log(this.props.gameStatus.get('playing'));
 	      return _react2.default.createElement(
 	        'ul',
 	        { className: 'score-btn-list' },
@@ -27732,10 +27733,10 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { className: 's-hide' },
 	          '1\u500D'
 	        ),
-	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', { className: 's-hide' }),
 	        scoreArr.map(function (score, idx) {
 	          return _react2.default.createElement(
 	            'li',
@@ -27749,10 +27750,10 @@
 	        }),
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { className: 's-hide' },
 	          '2\u500D'
 	        ),
-	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', { className: 's-hide' }),
 	        scoreArr.map(function (score, idx) {
 	          return _react2.default.createElement(
 	            'li',
@@ -27766,10 +27767,10 @@
 	        }),
 	        _react2.default.createElement(
 	          'li',
-	          null,
+	          { className: 's-hide' },
 	          '3\u500D'
 	        ),
-	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', { className: 's-hide' }),
 	        scoreArr.map(function (score, idx) {
 	          return _react2.default.createElement(
 	            'li',
@@ -28114,9 +28115,87 @@
 	  var player = players.get(currentPlayer);
 	  if (!player) {
 	    return _react2.default.createElement(
-	      'div',
-	      { className: 'current-score' },
-	      '+'
+	      'ul',
+	      { className: 'criket-score-board' },
+	      _react2.default.createElement(
+	        'li',
+	        { className: 'player' },
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          '\xA0'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: (0, _classname2.default)({ player: true }) },
+	            'Bull'
+	          ),
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: (0, _classname2.default)({ player: true }) },
+	            '20'
+	          ),
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: (0, _classname2.default)({ player: true }) },
+	            '19'
+	          ),
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: (0, _classname2.default)({ player: true }) },
+	            '18'
+	          ),
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: (0, _classname2.default)({ player: true }) },
+	            '17'
+	          ),
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: (0, _classname2.default)({ player: true }) },
+	            '16'
+	          ),
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: (0, _classname2.default)({ player: true }) },
+	            '15'
+	          ),
+	          _react2.default.createElement('br', null)
+	        )
+	      )
 	    );
 	  }
 	  return _react2.default.createElement(
@@ -28887,8 +28966,6 @@
 	  switch (action.type) {
 	    case types.SET_GAME_STATUS:
 	      return state;
-	    case types.UPDATE_SCORE:
-	      return state.set('currentDart', action.payload.currentDart);
 	    case types.UPDATE_ROUND:
 	      var cr = state.get('currentRound');
 	      if (action.payload.isNextRound) {
@@ -28922,7 +28999,7 @@
 	var Map = _immutable2.default.Map,
 	    List = _immutable2.default.List;
 
-	var initialState = Map({ currentRound: 0, status: 0, type: 'criket', playing: false, currentDart: 0 });
+	var initialState = Map({ currentRound: 0, status: 0, type: 501, playing: false, currentDart: 0 });
 
 /***/ },
 /* 225 */

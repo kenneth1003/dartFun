@@ -114,7 +114,7 @@ ul {
   border-top: 1px solid #999;
   margin-top: 30px;
   padding: 15px;
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
   text-align: center;
 }
@@ -127,6 +127,7 @@ ul {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   transition: all .15s;
+  white-space: nowrap;
 }
 .score-btn-list li.active {
   background-color: #eee;
@@ -171,7 +172,7 @@ ul {
 .w40 {
   width: 38px;
 }
-.font-red {
+.font-red button{
   color: #dd0000;
 }
 .hidden {
@@ -217,4 +218,52 @@ ul {
 }
 .count-img-2 {
   border-color: transparent;
+}
+
+@media(max-width: 568px) {
+  .player {
+    padding: 5px;
+  }
+  .score-btn-list {
+    width: 100%;
+  }
+  .score-btn-list li {
+    white-space: initial;
+  }
+  .current-round-list {
+      font-size: 16px;
+      min-width: 113px;
+      padding-right: 0;
+      padding-left: 15px;
+  }
+  .criket-score-board {
+    padding: 0;
+  }
+  .criket-score-board .player {
+      font-size: 18px;
+      padding: 8px 4px;
+  }
+  .history-score-list {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    min-width: 80px;
+  }
+  .history-score-list li{
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 0;
+    min-width: 60px;
+  }
+  .current-score {
+      font-size: 38px;
+      margin: 0 20px;
+  }
+  .s-hide {
+    display: none !important;
+  }
+  .w40 {
+    width: 28px;
+  }
 }

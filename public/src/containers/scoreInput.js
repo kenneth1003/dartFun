@@ -56,6 +56,7 @@ class App extends Component {
   }
   renderScoreBtn() {
     const gameType = this.props.gameStatus.get('type');
+    console.log( this.props.gameStatus.get('playing') )
     return (
       <ul className="score-btn-list">
         <li onClick={ this.props.addPlayer } className={cx({ 'font-red': true, hidden: this.props.gameStatus.get('playing') })}><button>新增玩家</button></li>
@@ -71,15 +72,15 @@ class App extends Component {
         <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 'd' + 25) }>Bull</button></li>
         <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 0) }>Miss</button></li>
         <br/>
-        <li>1倍</li><br/>
+        <li className="s-hide">1倍</li><br className="s-hide"/>
         { scoreArr.map( (score, idx) => {
           return (<li className="btn-single" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 's' + (idx+1)) }>{ idx+1 }</button></li>)
         }) }
-        <li>2倍</li><br/>
+        <li className="s-hide">2倍</li><br className="s-hide"/>
         { scoreArr.map( (score, idx) => {
           return (<li className="btn-double" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 'd' + (idx+1)) }>{ idx+1 }</button></li>)
         }) }
-        <li>3倍</li><br/>
+        <li className="s-hide">3倍</li><br className="s-hide"/>
         { scoreArr.map( (score, idx) => {
           return (<li className="btn-triple" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 't' + (idx+1)) }>{ idx+1 }</button></li>)
         }) }
