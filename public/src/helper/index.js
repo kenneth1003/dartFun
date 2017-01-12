@@ -1,32 +1,34 @@
 import { Map, List} from 'immutable';
+
 let Helper =  {
+
+  sum3Darts: function(list) {
+   return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
+   function symbolToNum(symbol)  {
+     if (typeof symbol === 'number') { return symbol }
+     var firstLetter = symbol[0];
+     var num = +symbol.slice(1);
+     switch (firstLetter) {
+       case 's':
+         return num;
+       case 'd':
+         return num * 2;
+       case 't':
+         return num * 3;
+       default:
+         break;
+     }
+    }
+  },
+
   recordsToSum: function(records)  {
-    let rtn = records.reduce(function(pre, cur) {
+    let _this = this;
+    return records.reduce(function(pre, cur) {
       let sum = 0;
-      sum  = sum3Darts(cur);
+      sum  = _this.sum3Darts.bind(_this)(cur);
       pre += sum;
       return pre;
     }, 0);
-    return rtn;
-
-    function sum3Darts(list) {
-      return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
-       function symbolToNum(symbol)  {
-         if (typeof symbol === 'number') { return symbol }
-         var firstLetter = symbol[0];
-         var num = +symbol.slice(1);
-         switch (firstLetter) {
-           case 's':
-             return num;
-           case 'd':
-             return num * 2;
-           case 't':
-             return num * 3;
-           default:
-             break;
-         }
-       }
-    }
   },
 
   symbolToNum: function(symbol)  {
@@ -41,17 +43,8 @@ let Helper =  {
       case 't':
         return num * 3;
       default:
-        // statements_def
         break;
     }
-  },
-
-  greaterThan15: function()  {
-
-  },
-
-  symbolToCount: function()  {
-
   },
 
   symbolToString: function(symbol) {
@@ -69,7 +62,6 @@ let Helper =  {
       case 't':
         return 'Triple ' + num;
       default:
-        // statements_def
         break;
       }
   },
@@ -86,7 +78,6 @@ let Helper =  {
       case 't':
         return '3';
       default:
-        // statements_def
         break;
       }
   },
@@ -115,24 +106,14 @@ let Helper =  {
     return List(result);
   },
 
-  sum3Darts: function(list) {
-   return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
-   function symbolToNum(symbol)  {
-     if (typeof symbol === 'number') { return symbol }
-     var firstLetter = symbol[0];
-     var num = symbol.slice(1);
-     switch (firstLetter) {
-       case 's':
-         return num;
-       case 'd':
-         return num * 2;
-       case 't':
-         return num * 3;
-       default:
-         break;
-     }
-   }
+  nextPlayer(sum, player) {
+    if(player + 1 >= sum) {
+      return 0;
+    } else {
+      return player + 1; 
+    }
   },
+
   getHintMaster: function(score) {
     if(!this.closeMapMaster[score]) { return ['-', '-', '-'] }
     return this.closeMapMaster[score];
@@ -228,7 +209,7 @@ let Helper =  {
     "83": ['s13', 's20', 'bull'],
     "82": ['bull', 'd16', '-'],
     "81": ['s11', 's20', 'bull'],
-    "80": ['s10', 's20', 'bull'],
+    "80": ['d15', 'bull', '-'],
 
     "79": ['s19', 't20', '-'],
     "78": ['d19', 'd20', '-'],
@@ -317,6 +298,7 @@ let Helper =  {
     "2": ['d1', '-', '-'],
     "1": ['-', '-', '-']
   }
+
 };
 
 export default Helper;

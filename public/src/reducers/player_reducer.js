@@ -35,7 +35,7 @@ export default function(state = initialState, action) {
 
 
     case types.UPDATE_ROUND:
-      const np = nextPlayer(state.size, +action.payload.currentPlayer);
+      const np = helper.nextPlayer(state.size, +action.payload.currentPlayer);
       return state.setIn([np, 'records'], state.get(np).get('records').push(List([0,0,0])));
     case types.RESET:
       return initialState;
@@ -44,13 +44,6 @@ export default function(state = initialState, action) {
   }
 }
 
-function nextPlayer(sum, player) {
-  if(player + 1 >= sum) {
-    return 0;
-  } else {
-    return player + 1; 
-  }
-}
 
 function criketScoreCount(symbol, state, currentPlayer) {
   if(typeof dart === 'number'){ return state; }

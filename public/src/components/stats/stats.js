@@ -1,6 +1,6 @@
 import React from 'react';
 import helper from '../../helper'
-let avg = 0;
+let avg = [];
 export default ({ players, currentPlayer, gameStatus }) => {
   const player = players.get(currentPlayer);
   if(!player) { return <div className="stats">三標平均:</div> }
@@ -9,9 +9,9 @@ export default ({ players, currentPlayer, gameStatus }) => {
   const numerator = recordSum - helper.sum3Darts(records.get(gameStatus.get('currentRound')));
   const denominator = gameStatus.get('currentRound');
   if(gameStatus.get('type') - recordSum < 150) {
-    return (<div className="stats">三標平均:<br/>{ avg }</div>)
+    return (<div className="stats">三標平均:<br/>{ avg[currentPlayer] }</div>)
   }
-  avg = (numerator / denominator).toFixed(2)
+  avg[currentPlayer] = (numerator / denominator).toFixed(2)
   if (!denominator) { return <div className="stats">三標平均: <br/>-- </div>}
-  return (<div className="stats">三標平均: <br/> { (numerator / denominator).toFixed(2) }</div>)
+  return (<div className="stats">三標平均: <br/> { avg[currentPlayer] }</div>)
 }

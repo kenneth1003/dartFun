@@ -3,12 +3,21 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import cx from 'classname';
 import helper from '../helper';
+import audio from '../resource_entry/audio';
 
 let scoreArr = [];
  for(let i = 1; i <= 20; i++ ){
   scoreArr.push(i);          
- }
- let round = 0;
+}
+let round = 0;
+
+
+function handleScorePlaying(score) {
+  if(score === 'd25' || score === 's25') { return audio.playAudBullseye() }
+  if(score === 's0') { return audio.playAudMiss() }
+  return audio.playAudHit()
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,29 +25,38 @@ class App extends Component {
   }
   scoreOnClick(num) {
     if(this.props.players.size === 0) { alert('請先新增玩家'); return };
-    const player = this.props.players.get(this.props.currentPlayer);
-    const records = player.get('records');
-    const totalScore = helper.recordsToSum(records);
-    const judge = checkEndCondition(totalScore, helper.symbolToNum(num), this.props.gameStatus.get('type'));
 
+    const player     = this.props.players.get(this.props.currentPlayer);
+    const records    = player.get('records');
+    const totalScore = helper.recordsToSum(records);
+    const judge      = checkEndCondition(totalScore, helper.symbolToNum(num), this.props.gameStatus.get('type'));
 
     this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round);
+    handleScorePlaying(num)
 
-    if(judge === 1) { alert('player' + (this.props.currentPlayer + 1) + 'wins') }
+    if(!this.props.gameStatus.get('playing')) { audio.playAudGameStart() }
+    if(judge === 1) { audio.playAudVictory(); alert('player' + (this.props.currentPlayer + 1) + 'wins') }
     if(judge === 2) { 
+      audio.playAudBust();
       this.props.burst(this.props.currentPlayer, this.props.gameStatus.get('currentRound')); 
       round = 0;
       const allPlayer = this.props.players.size;
       const isNextRound = +this.props.currentPlayer == (allPlayer -1);
-      this.props.updateRound(isNextRound, nextPlayer(this.props.players.size, this.props.currentPlayer));
+      this.props.updateRound(isNextRound, helper.nextPlayer(this.props.players.size, this.props.currentPlayer));
       return; 
     }
     round++;
     if(round >= 3) {
-      round = 0;
-      const allPlayer = this.props.players.size;
-      const isNextRound = +this.props.currentPlayer == (allPlayer -1);
-      this.props.updateRound(isNextRound, nextPlayer(this.props.players.size, this.props.currentPlayer));
+      const allPlayer     = this.props.players.size;
+      const isNextRound   = +this.props.currentPlayer == (allPlayer -1);
+      const currentPlayer = this.props.currentPlayer;
+      const updateRound   = this.props.updateRound;
+      // setTimeout(function(){
+        handleScorePlaying(num)
+        audio.playAudChange();
+        round = 0;
+        updateRound(isNextRound, helper.nextPlayer(allPlayer, currentPlayer));
+      // }, 3000)
     }
   }
   handleReset() {
@@ -96,15 +114,6 @@ function mapStateToProps(state) {
     currentPlayer:  state.currentPlayer
   }
 }
-function nextPlayer(sum, player) {
-  if(player + 1 >= sum) {
-    return 0;
-  } else {
-    return player + 1; 
-  }
-}
-
-
 
 function checkEndCondition(point, currentShot, gameType) {
   if(point + currentShot < gameType) { return 0 }
