@@ -13,8 +13,8 @@ export default ({ player, key, num, type, cp }) => {
 
     {
       reverseCounts.map((count, idx) => (
-        <div>
-          <Count key={ idx } count={ reverseCounts.get(idx).get('count') } /> 
+        <div key={ idx }>
+          <Count count={ reverseCounts.get(idx).get('count') } /> 
           <br/>
         </div>
       ))

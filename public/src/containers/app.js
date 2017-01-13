@@ -3,6 +3,7 @@ import Players from '../components/players';
 import Stats from '../components/stats';
 import Hint from '../components/hint';
 import TotalStat from '../components/common/total_stats';
+import TotalStatToggle from '../components/common/total_stats_toggle';
 // import Result from '../components/result/result';
 import CurrentScore from '../components/current_score';
 import CurrentRound from '../components/current_round';
@@ -32,6 +33,8 @@ class App extends Component {
           </div>
           <CriketPlayers players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
           <CriketScoreInput />
+          <TotalStatToggle />
+          <TotalStat players={ this.props.players } gameStatus={ this.props.gameStatus }/>
         </div>
       );
     }
@@ -46,12 +49,13 @@ class App extends Component {
         </div>
         <Players players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
         <ScoreInput />
+        <TotalStatToggle />
+        <TotalStat players={ this.props.players } gameStatus={ this.props.gameStatus }/>
       </div>
     );
   }
 }
 
-//<TotalStat players={ this.props.players } />
 function mapStateToProps(state) {
   return {
     players:  state.players.present,

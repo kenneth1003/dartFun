@@ -8,7 +8,8 @@ export default ({ players, currentPlayer, gameStatus }) => {
   const recordSum = helper.recordsToSum(records);
   const numerator = recordSum - helper.sum3Darts(records.get(gameStatus.get('currentRound')));
   const denominator = gameStatus.get('currentRound');
-  if(gameStatus.get('type') - recordSum < 150) {
+
+  if(gameStatus.get('type') - numerator < 100) {
     return (<div className="stats">三標平均:<br/>{ avg[currentPlayer] }</div>)
   }
   avg[currentPlayer] = (numerator / denominator).toFixed(2)

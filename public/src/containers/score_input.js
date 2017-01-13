@@ -38,8 +38,12 @@ class ScoreInput extends Component {
     this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round.current);
     helper.handleScorePlaying(num, audioToPlay)
 
-    if(!this.props.gameStatus.get('playing')) { audioToPlay.playGameStart() }
-    if(judge === 1) { audioToPlay.playGameEnd(); alert('player' + (this.props.currentPlayer + 1) + 'wins') }
+    if(judge === 1) { 
+      audioToPlay.playGameEnd(); 
+      this.props.gameEnd();
+      alert('player' + (this.props.currentPlayer + 1) + 'wins');  
+      return; 
+    }
     if(judge === 2) { 
       audioToPlay.playBust();
       this.props.burst(this.props.currentPlayer, this.props.gameStatus.get('currentRound')); 
@@ -61,7 +65,7 @@ class ScoreInput extends Component {
       })
       helper.handleScorePlaying(num,audioToPlay)
       setTimeout(audioToPlay.playPlayerOut.bind(audioToPlay), 700);
-      setTimeout(function(){
+      setTimeout(() => {
         audioToPlay.playPlayerIn();
         round.current = 0;
         updateRound(isNextRound, helper.nextPlayer(allPlayer, currentPlayer));
@@ -77,7 +81,7 @@ class ScoreInput extends Component {
       <div className="">
         <SettingList round={ round } />
           <hr/>
-        <ul className="score-btn-list">
+        <ul className={ cx({"score-btn-list": true, hidden: !this.props.gameStatus.get('playing') })}>
           <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 'd' + 25) }>Bull</button></li>
           <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 0) }>Miss</button></li>
           <br/>

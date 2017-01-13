@@ -67,7 +67,7 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _store = __webpack_require__(225);
+	var _store = __webpack_require__(226);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -21840,45 +21840,49 @@
 
 	var _total_stats2 = _interopRequireDefault(_total_stats);
 
-	var _current_score = __webpack_require__(216);
+	var _total_stats_toggle = __webpack_require__(216);
+
+	var _total_stats_toggle2 = _interopRequireDefault(_total_stats_toggle);
+
+	var _current_score = __webpack_require__(217);
 
 	var _current_score2 = _interopRequireDefault(_current_score);
 
-	var _current_round = __webpack_require__(217);
+	var _current_round = __webpack_require__(218);
 
 	var _current_round2 = _interopRequireDefault(_current_round);
 
-	var _history_score = __webpack_require__(218);
+	var _history_score = __webpack_require__(219);
 
 	var _history_score2 = _interopRequireDefault(_history_score);
 
-	var _score_input = __webpack_require__(219);
+	var _score_input = __webpack_require__(220);
 
 	var _score_input2 = _interopRequireDefault(_score_input);
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _players3 = __webpack_require__(231);
+	var _players3 = __webpack_require__(232);
 
 	var _players4 = _interopRequireDefault(_players3);
 
-	var _stats3 = __webpack_require__(233);
+	var _stats3 = __webpack_require__(234);
 
 	var _stats4 = _interopRequireDefault(_stats3);
 
-	var _score_board = __webpack_require__(234);
+	var _score_board = __webpack_require__(235);
 
 	var _score_board2 = _interopRequireDefault(_score_board);
 
-	var _current_round3 = __webpack_require__(237);
+	var _current_round3 = __webpack_require__(238);
 
 	var _current_round4 = _interopRequireDefault(_current_round3);
 
-	var _history_score3 = __webpack_require__(238);
+	var _history_score3 = __webpack_require__(239);
 
 	var _history_score4 = _interopRequireDefault(_history_score3);
 
-	var _score_input3 = __webpack_require__(239);
+	var _score_input3 = __webpack_require__(240);
 
 	var _score_input4 = _interopRequireDefault(_score_input3);
 
@@ -21919,7 +21923,9 @@
 	            _react2.default.createElement(_current_round4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
 	          ),
 	          _react2.default.createElement(_players4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_score_input4.default, null)
+	          _react2.default.createElement(_score_input4.default, null),
+	          _react2.default.createElement(_total_stats_toggle2.default, null),
+	          _react2.default.createElement(_total_stats2.default, { players: this.props.players, gameStatus: this.props.gameStatus })
 	        );
 	      }
 	      return _react2.default.createElement(
@@ -21935,16 +21941,15 @@
 	          _react2.default.createElement(_current_round2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
 	        ),
 	        _react2.default.createElement(_players2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	        _react2.default.createElement(_score_input2.default, null)
+	        _react2.default.createElement(_score_input2.default, null),
+	        _react2.default.createElement(_total_stats_toggle2.default, null),
+	        _react2.default.createElement(_total_stats2.default, { players: this.props.players, gameStatus: this.props.gameStatus })
 	      );
 	    }
 	  }]);
 
 	  return App;
 	}(_react.Component);
-
-	//<TotalStat players={ this.props.players } />
-
 
 	function mapStateToProps(state) {
 	  return {
@@ -22194,24 +22199,13 @@
 	var Helper = {
 
 	  sum3Darts: function sum3Darts(list) {
-	    return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
-	    function symbolToNum(symbol) {
-	      if (typeof symbol === 'number') {
-	        return symbol;
-	      }
-	      var firstLetter = symbol[0];
-	      var num = +symbol.slice(1);
-	      switch (firstLetter) {
-	        case 's':
-	          return num;
-	        case 'd':
-	          return num * 2;
-	        case 't':
-	          return num * 3;
-	        default:
-	          break;
-	      }
-	    }
+	    var transferer = Helper.symbolToNum.bind(Helper);
+	    return transferer(list.get(0)) + transferer(list.get(1)) + transferer(list.get(2));
+	  },
+
+	  sum3DartsCount: function sum3DartsCount(list) {
+	    var transferer = Helper.symboToCounts.bind(Helper);
+	    return +transferer(list.get(0)) + +transferer(list.get(1)) + +transferer(list.get(2));
 	  },
 
 	  recordsToSum: function recordsToSum(records) {
@@ -22516,7 +22510,7 @@
 	    "24": ['d12', '-', '-'],
 	    "23": ['s3', 'd10', '-'],
 	    "22": ['d11', '-', '-'],
-	    "21": ['t21', '-', '-'],
+	    "21": ['t7', '-', '-'],
 	    "20": ['d10', '-', '-'],
 
 	    "19": ['s3', 'd8', '-'],
@@ -27568,7 +27562,8 @@
 	  var recordSum = _helper2.default.recordsToSum(records);
 	  var numerator = recordSum - _helper2.default.sum3Darts(records.get(gameStatus.get('currentRound')));
 	  var denominator = gameStatus.get('currentRound');
-	  if (gameStatus.get('type') - recordSum < 150) {
+
+	  if (gameStatus.get('type') - numerator < 100) {
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'stats' },
@@ -27635,10 +27630,10 @@
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'hint' },
-	    hintArr.map(function (hint) {
+	    hintArr.map(function (hint, idx) {
 	      return _react2.default.createElement(
 	        'span',
-	        null,
+	        { key: idx },
 	        _helper2.default.symbolToString(hint)
 	      );
 	    })
@@ -27674,8 +27669,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = function (_ref) {
-	  var players = _ref.players;
+	  var players = _ref.players,
+	      gameStatus = _ref.gameStatus;
 
+	  var sum = void 0;
 	  if (players.size === 0) {
 	    return _react2.default.createElement(
 	      'ul',
@@ -27687,9 +27684,14 @@
 	      )
 	    );
 	  }
+	  if (gameStatus.get('type') === 'criket') {
+	    sum = _helper2.default.sum3DartsCount;
+	  } else {
+	    sum = _helper2.default.sum3Darts;
+	  }
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'total-list' },
+	    { className: 'total-list', id: 'total-list' },
 	    players.map(function (player, idx) {
 	      return _react2.default.createElement(
 	        'ul',
@@ -27710,8 +27712,7 @@
 	                  dart
 	                );
 	              }),
-	              '\xA0\xA0',
-	              _helper2.default.sum3Darts(round)
+	              sum(round)
 	            );
 	          })
 	        )
@@ -28528,6 +28529,46 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (_ref) {
+	  var players = _ref.players;
+
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'total-list__toggle', onClick: toggleTotalList },
+	    '\u904A\u6232',
+	    _react2.default.createElement('br', null),
+	    '\u8A18\u9304'
+	  );
+	};
+
+	var ListActive = false;
+	function toggleTotalList() {
+	  var list = document.getElementById('total-list').classList;
+	  console.log(ListActive);
+	  if (ListActive) {
+	    list.remove('active');
+	  } else {
+	    list.add('active');
+	  }
+	  ListActive = !ListActive;
+	}
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _helper = __webpack_require__(204);
 
 	var _helper2 = _interopRequireDefault(_helper);
@@ -28556,7 +28597,7 @@
 	};
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28619,7 +28660,7 @@
 	};
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28681,7 +28722,7 @@
 	};
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28698,7 +28739,7 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _actions = __webpack_require__(220);
+	var _actions = __webpack_require__(221);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -28710,15 +28751,15 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
-	var _audio = __webpack_require__(222);
+	var _audio = __webpack_require__(223);
 
 	var _audio2 = _interopRequireDefault(_audio);
 
-	var _setting_list = __webpack_require__(223);
+	var _setting_list = __webpack_require__(224);
 
 	var _setting_list2 = _interopRequireDefault(_setting_list);
 
-	var _next_player_mask = __webpack_require__(230);
+	var _next_player_mask = __webpack_require__(231);
 
 	var _next_player_mask2 = _interopRequireDefault(_next_player_mask);
 
@@ -28773,11 +28814,11 @@
 	      this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round.current);
 	      _helper2.default.handleScorePlaying(num, audioToPlay);
 
-	      if (!this.props.gameStatus.get('playing')) {
-	        audioToPlay.playGameStart();
-	      }
 	      if (judge === 1) {
-	        audioToPlay.playGameEnd();alert('player' + (this.props.currentPlayer + 1) + 'wins');
+	        audioToPlay.playGameEnd();
+	        this.props.gameEnd();
+	        alert('player' + (this.props.currentPlayer + 1) + 'wins');
+	        return;
 	      }
 	      if (judge === 2) {
 	        audioToPlay.playBust();
@@ -28825,7 +28866,7 @@
 	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'ul',
-	          { className: 'score-btn-list' },
+	          { className: (0, _classname2.default)({ "score-btn-list": true, hidden: !this.props.gameStatus.get('playing') }) },
 	          _react2.default.createElement(
 	            'li',
 	            { className: 'btn-special' },
@@ -28928,7 +28969,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(ScoreInput);
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28939,13 +28980,15 @@
 	exports.updateScore = updateScore;
 	exports.updateRound = updateRound;
 	exports.undoScore = undoScore;
+	exports.gameEnd = gameEnd;
+	exports.gameStart = gameStart;
 	exports.changeAudio = changeAudio;
 	exports.reset = reset;
 	exports.addPlayer = addPlayer;
 	exports.setGame = setGame;
 	exports.burst = burst;
 
-	var _types = __webpack_require__(221);
+	var _types = __webpack_require__(222);
 
 	var types = _interopRequireWildcard(_types);
 
@@ -28976,6 +29019,18 @@
 	function undoScore() {
 	  return {
 	    type: types.UNDO_SCORE
+	  };
+	}
+
+	function gameEnd() {
+	  return {
+	    type: types.GAME_END
+	  };
+	}
+
+	function gameStart() {
+	  return {
+	    type: types.GAME_START
 	  };
 	}
 
@@ -29016,7 +29071,7 @@
 	}
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29034,9 +29089,11 @@
 	var BURST = exports.BURST = 'burst';
 	var UPDATE_DART = exports.UPDATE_DART = 'update_dart';
 	var CHANGE_AUDIO = exports.CHANGE_AUDIO = 'change_audio';
+	var GAME_START = exports.GAME_START = 'game_start';
+	var GAME_END = exports.GAME_END = 'game_end';
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29141,7 +29198,7 @@
 	exports.default = audio;
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29158,7 +29215,7 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _actions = __webpack_require__(220);
+	var _actions = __webpack_require__(221);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -29170,13 +29227,13 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
-	var _audio = __webpack_require__(222);
+	var _audio = __webpack_require__(223);
 
 	var _audio2 = _interopRequireDefault(_audio);
 
-	var _reduxUndo = __webpack_require__(224);
+	var _reduxUndo = __webpack_require__(225);
 
-	var _store = __webpack_require__(225);
+	var _store = __webpack_require__(226);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -29219,19 +29276,40 @@
 	      }
 	    }
 	  }, {
+	    key: 'gameStart',
+	    value: function gameStart() {
+	      this.props.gameStart();
+	      var audioGameKey = this.props.gameStatus.get('type') === 'criket' ? 'criket' : 'zero1';
+	      var audioToPlay = _audio2.default[audioGameKey][this.props.gameStatus.get('audioKey')];
+	      if (!this.props.gameStatus.get('playing')) {
+	        audioToPlay.playGameStart();
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var gameType = this.props.gameStatus.get('type');
+	      var isPlaying = this.props.gameStatus.get('playing');
+	      var isEnded = this.props.gameStatus.get('ended');
 	      return _react2.default.createElement(
 	        'ul',
 	        { className: 'setting-list' },
 	        _react2.default.createElement(
 	          'li',
-	          { onClick: this.props.addPlayer, className: (0, _classname2.default)({ 'font-red': true, hidden: this.props.gameStatus.get('playing') }) },
+	          { onClick: this.props.addPlayer, className: (0, _classname2.default)({ 'font-red': true, hidden: isPlaying || isEnded }) },
 	          _react2.default.createElement(
 	            'button',
 	            null,
 	            '\u65B0\u589E\u73A9\u5BB6'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { onClick: this.gameStart.bind(this), className: (0, _classname2.default)({ 'font-red': true, hidden: isPlaying || isEnded }) },
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            '\u958B\u59CB'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -29279,12 +29357,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ hidden: this.props.gameStatus.get('playing') }), style: { textAlign: 'right' } },
+	          { className: (0, _classname2.default)({ hidden: isPlaying || isEnded }), style: { textAlign: 'right' } },
 	          '\u7A2E\u985E\uFF1A'
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 301, hidden: this.props.gameStatus.get('playing') }),
+	          { className: (0, _classname2.default)({ active: gameType === 301, hidden: isPlaying || isEnded }),
 	            onClick: this.props.setGame.bind(null, 301) },
 	          _react2.default.createElement(
 	            'button',
@@ -29294,7 +29372,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 501, hidden: this.props.gameStatus.get('playing') }),
+	          { className: (0, _classname2.default)({ active: gameType === 501, hidden: isPlaying || isEnded }),
 	            onClick: this.props.setGame.bind(null, 501) },
 	          _react2.default.createElement(
 	            'button',
@@ -29304,7 +29382,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 701, hidden: this.props.gameStatus.get('playing') }),
+	          { className: (0, _classname2.default)({ active: gameType === 701, hidden: isPlaying || isEnded }),
 	            onClick: this.props.setGame.bind(null, 701) },
 	          _react2.default.createElement(
 	            'button',
@@ -29314,7 +29392,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'li',
-	          { className: (0, _classname2.default)({ active: gameType === 'criket', hidden: this.props.gameStatus.get('playing') }),
+	          { className: (0, _classname2.default)({ active: gameType === 'criket', hidden: isPlaying || isEnded }),
 	            onClick: this.props.setGame.bind(null, 'criket') },
 	          _react2.default.createElement(
 	            'button',
@@ -29340,7 +29418,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(SettingList);
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29690,7 +29768,7 @@
 	// /excludeAction
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29699,7 +29777,7 @@
 	  value: true
 	});
 
-	var _reducers = __webpack_require__(226);
+	var _reducers = __webpack_require__(227);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -29712,7 +29790,7 @@
 	exports.default = createStoreWithMiddleware(_reducers2.default);
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29723,19 +29801,19 @@
 
 	var _redux = __webpack_require__(167);
 
-	var _reduxUndo = __webpack_require__(224);
+	var _reduxUndo = __webpack_require__(225);
 
 	var _reduxUndo2 = _interopRequireDefault(_reduxUndo);
 
-	var _player_reducer = __webpack_require__(227);
+	var _player_reducer = __webpack_require__(228);
 
 	var _player_reducer2 = _interopRequireDefault(_player_reducer);
 
-	var _game_status_reducer = __webpack_require__(228);
+	var _game_status_reducer = __webpack_require__(229);
 
 	var _game_status_reducer2 = _interopRequireDefault(_game_status_reducer);
 
-	var _current_player_reducer = __webpack_require__(229);
+	var _current_player_reducer = __webpack_require__(230);
 
 	var _current_player_reducer2 = _interopRequireDefault(_current_player_reducer);
 
@@ -29750,7 +29828,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29797,7 +29875,7 @@
 	  }
 	};
 
-	var _types = __webpack_require__(221);
+	var _types = __webpack_require__(222);
 
 	var types = _interopRequireWildcard(_types);
 
@@ -29859,7 +29937,7 @@
 	}
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29875,6 +29953,7 @@
 	  switch (action.type) {
 	    case types.SET_GAME_STATUS:
 	      return state;
+
 	    case types.UPDATE_ROUND:
 	      var cr = state.get('currentRound');
 	      if (action.payload.isNextRound) {
@@ -29882,20 +29961,28 @@
 	        return newState;
 	      }
 	      return state;
-	    case types.UPDATE_SCORE:
-	      return state.set('playing', true);
+
 	    case types.SET_GAME:
 	      return state.set('type', action.payload);
+
 	    case types.CHANGE_AUDIO:
 	      return state.set('audioKey', action.payload);
+
+	    case types.GAME_START:
+	      return state.set('playing', true);
+
+	    case types.GAME_END:
+	      return state.set('playing', false).set('ended', true);
+
 	    case types.RESET:
 	      return initialState;
+
 	    default:
 	      return state;
 	  }
 	};
 
-	var _types = __webpack_require__(221);
+	var _types = __webpack_require__(222);
 
 	var types = _interopRequireWildcard(_types);
 
@@ -29915,12 +30002,13 @@
 	  status: 0,
 	  type: 501,
 	  playing: false,
+	  ended: false,
 	  currentDart: 0,
 	  audioKey: 'dexter'
 	});
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29948,14 +30036,14 @@
 	  }
 	};
 
-	var _types = __webpack_require__(221);
+	var _types = __webpack_require__(222);
 
 	var types = _interopRequireWildcard(_types);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29979,7 +30067,7 @@
 	};
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29992,7 +30080,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _player = __webpack_require__(232);
+	var _player = __webpack_require__(233);
 
 	var _player2 = _interopRequireDefault(_player);
 
@@ -30026,7 +30114,7 @@
 	};
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30073,7 +30161,7 @@
 	};
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30141,7 +30229,7 @@
 	};
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30158,7 +30246,7 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
-	var _score_board_player = __webpack_require__(235);
+	var _score_board_player = __webpack_require__(236);
 
 	var _score_board_player2 = _interopRequireDefault(_score_board_player);
 
@@ -30348,7 +30436,7 @@
 	};
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30365,7 +30453,7 @@
 
 	var _classname2 = _interopRequireDefault(_classname);
 
-	var _score_board_count = __webpack_require__(236);
+	var _score_board_count = __webpack_require__(237);
 
 	var _score_board_count2 = _interopRequireDefault(_score_board_count);
 
@@ -30397,8 +30485,8 @@
 	    reverseCounts.map(function (count, idx) {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement(_score_board_count2.default, { key: idx, count: reverseCounts.get(idx).get('count') }),
+	        { key: idx },
+	        _react2.default.createElement(_score_board_count2.default, { count: reverseCounts.get(idx).get('count') }),
 	        _react2.default.createElement('br', null)
 	      );
 	    })
@@ -30406,7 +30494,7 @@
 	};
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30461,7 +30549,7 @@
 	};
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30520,7 +30608,7 @@
 	};
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30575,7 +30663,7 @@
 	};
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30592,7 +30680,7 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _actions = __webpack_require__(220);
+	var _actions = __webpack_require__(221);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -30604,15 +30692,15 @@
 
 	var _helper2 = _interopRequireDefault(_helper);
 
-	var _audio = __webpack_require__(222);
+	var _audio = __webpack_require__(223);
 
 	var _audio2 = _interopRequireDefault(_audio);
 
-	var _setting_list = __webpack_require__(223);
+	var _setting_list = __webpack_require__(224);
 
 	var _setting_list2 = _interopRequireDefault(_setting_list);
 
-	var _next_player_mask = __webpack_require__(230);
+	var _next_player_mask = __webpack_require__(231);
 
 	var _next_player_mask2 = _interopRequireDefault(_next_player_mask);
 
@@ -30661,6 +30749,9 @@
 
 	      this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round.current);
 	      _helper2.default.handleScorePlaying(num, audioToPlay);
+	      if (!this.props.gameStatus.get('playing')) {
+	        audioToPlay.playGameStart();
+	      }
 
 	      round.current++;
 	      if (round.current >= 3) {
@@ -30670,6 +30761,7 @@
 	            showNextPlayerMask: true
 	          });
 	          _helper2.default.handleScorePlaying(num, audioToPlay);
+	          setTimeout(audioToPlay.playPlayerOut.bind(audioToPlay), 700);
 
 	          setTimeout(function () {
 	            round.current = 0;
@@ -30696,7 +30788,7 @@
 	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
 	          'ul',
-	          { className: 'score-btn-list' },
+	          { className: (0, _classname2.default)({ "score-btn-list": true, hidden: !this.props.gameStatus.get('playing') }) },
 	          _react2.default.createElement(
 	            'li',
 	            { className: 'btn-special' },

@@ -8,7 +8,7 @@ export default ({ players, currentPlayer, gameStatus }) => {
   const hintArr = helper.getHintMaster(gameStatus.get('type') - helper.recordsToSum(records));
   return (
    <div className="hint">{ 
-    hintArr.map((hint) => <span>{ helper.symbolToString(hint) }</span>)
+    hintArr.map((hint, idx) => <span key={ idx }>{ helper.symbolToString(hint) }</span>)
    }</div>
   )
 }

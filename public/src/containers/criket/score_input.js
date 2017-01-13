@@ -32,6 +32,7 @@ class App extends Component {
 
     this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round.current);
     helper.handleScorePlaying(num, audioToPlay)
+    if(!this.props.gameStatus.get('playing')) { audioToPlay.playGameStart() }
 
     round.current++;
     if(round.current >= 3) {
@@ -40,8 +41,9 @@ class App extends Component {
         showNextPlayerMask: true
       })
       helper.handleScorePlaying(num,audioToPlay)
+      setTimeout(audioToPlay.playPlayerOut.bind(audioToPlay), 700);
 
-      setTimeout(function(){
+      setTimeout(() => {
         round.current = 0;
         audioToPlay.playPlayerIn();
         const allPlayer = _this.props.players.size;
@@ -59,7 +61,7 @@ class App extends Component {
       <div>
         <SettingList round={ round } />
         <hr/>
-        <ul className="score-btn-list">
+        <ul className={ cx({"score-btn-list": true, hidden: !this.props.gameStatus.get('playing') })}>
           <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 0) }>Miss</button></li>
           <br/>
           <li>1倍</li>

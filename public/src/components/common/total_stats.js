@@ -3,16 +3,25 @@ import cx from 'classname';
 import helper from '../../helper';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-export default ({ players }) => {
+
+
+export default ({ players, gameStatus }) => {
+  let sum;
   if(players.size === 0) {
     return (
       <ul className="">
         <li>-</li>
       </ul>
     );
-    }
+  }
+  if(gameStatus.get('type') === 'criket') {
+    sum = helper.sum3DartsCount
+  } else {
+    sum = helper.sum3Darts
+    
+  }
   return (
-    <div className="total-list">
+    <div className="total-list" id="total-list">
       {
         players.map((player, idx) => {
           return (<ul className="total-list__player" key={idx}>
@@ -28,8 +37,7 @@ export default ({ players }) => {
                       return <span className="total-list__score" key={idx}>{ dart }</span>
                     })
                   }
-                  &nbsp;&nbsp;
-                  { helper.sum3Darts(round) }
+                  { sum(round) }
                   </div>)
               })
             }
@@ -40,5 +48,4 @@ export default ({ players }) => {
     </div>
   )
 }
-
 

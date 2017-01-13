@@ -3,22 +3,13 @@ import { Map, List} from 'immutable';
 let Helper =  {
 
   sum3Darts: function(list) {
-   return symbolToNum(list.get(0)) + symbolToNum(list.get(1)) + symbolToNum(list.get(2));
-   function symbolToNum(symbol)  {
-     if (typeof symbol === 'number') { return symbol }
-     var firstLetter = symbol[0];
-     var num = +symbol.slice(1);
-     switch (firstLetter) {
-       case 's':
-         return num;
-       case 'd':
-         return num * 2;
-       case 't':
-         return num * 3;
-       default:
-         break;
-     }
-    }
+   const transferer = Helper.symbolToNum.bind(Helper);
+   return transferer(list.get(0)) + transferer(list.get(1)) + transferer(list.get(2));
+  },
+
+  sum3DartsCount: function(list) {
+    const transferer = Helper.symboToCounts.bind(Helper);
+    return +transferer(list.get(0)) + +transferer(list.get(1)) + +transferer(list.get(2));
   },
 
   recordsToSum: function(records)  {
@@ -219,7 +210,7 @@ let Helper =  {
     "102": ['s2', 'bull', 'bull'],
     "101": ['s1', 'bull', 'bull'],
     "100": ['bull', 'bull', '-'],
-      "99": ['s19', 'd15', 'bull'],
+    "99": ['s19', 'd15', 'bull'],
     "98": ['s18', 'd15', 'bull'],
     "97": ['s17', 'd15', 'bull'],
     "96": ['s16', 'd15', 'bull'],
@@ -304,7 +295,7 @@ let Helper =  {
     "24": ['d12', '-', '-'],
     "23": ['s3', 'd10', '-'],
     "22": ['d11', '-', '-'],
-    "21": ['t21', '-', '-'],
+    "21": ['t7', '-', '-'],
     "20": ['d10', '-', '-'],
 
     "19": ['s3', 'd8', '-'],

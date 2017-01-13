@@ -30,6 +30,18 @@ export function undoScore () {
   }
 }
 
+export function gameEnd () {
+  return {
+    type: types.GAME_END
+  }
+}
+
+export function gameStart () {
+  return {
+    type: types.GAME_START
+  }
+}
+
 export function changeAudio(key) {
   return {
     type: types.CHANGE_AUDIO,

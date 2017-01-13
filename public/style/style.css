@@ -171,32 +171,63 @@ ul {
 }
 
 .score-btn-list li:hover{
-  transform: translateY(-1px);
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+  transform: translateY(-1px);
 }
 
 .total-list {
   display: flex;
   -webkit-justify-content: center;
           justify-content: center;
-  -webkit-align-items: center;
-          align-items: center;
+  transform: translateX(-100%);
+  transition: all .6s;
+  background-color: rgba(0,80,80,.7);
+  opacity: 1;
+  padding: 30px 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.total-list.active {
+  transform: translateX(0);
+  opacity: .9;
+  
 }
 .total-list__player {
   background-color: #f5f5f5;
   text-align: center;
   margin: 5px;
+  padding: 5px 15px;
+}
+.total-list__toggle {
+  background-color: #eee;
+  position: fixed;
+  float: right;
+  top: 10px;
+  left: 10px;
+  padding: 15px;
+  border-radius: 100px;
+  transition: all .3s;
+  z-index: 1;
+}
+.total-list__toggle:hover{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+  transform: translateY(-1px);
 }
 
 .total-list__round {
 }
 .total-list span{
+  display: inline-block;
   width: 40px;
 }
 
 .total-list__score {
   display: inline-block;
   padding: 0 2px;
+  font-size: 14px;
+  color: #555;
 }
 
 .btn-special {
