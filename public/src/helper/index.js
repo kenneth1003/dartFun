@@ -2,9 +2,9 @@ import { Map, List} from 'immutable';
 
 let Helper =  {
 
-  sum3Darts: function(list) {
+  sum3Darts: function(list, game) {
    const transferer = Helper.symbolToNum.bind(Helper);
-   return transferer(list.get(0)) + transferer(list.get(1)) + transferer(list.get(2));
+   return transferer(list.get(0), game) + transferer(list.get(1), game) + transferer(list.get(2), game);
   },
 
   sum3DartsCount: function(list) {
@@ -12,18 +12,19 @@ let Helper =  {
     return +transferer(list.get(0)) + +transferer(list.get(1)) + +transferer(list.get(2));
   },
 
-  recordsToSum: function(records)  {
+  recordsToSum: function(records, game)  {
     let _this = this;
     return records.reduce(function(pre, cur) {
       let sum = 0;
-      sum  = _this.sum3Darts.bind(_this)(cur);
+      sum  = _this.sum3Darts.bind(_this)(cur, game);
       pre += sum;
       return pre;
     }, 0);
   },
 
-  symbolToNum: function(symbol)  {
+  symbolToNum: function(symbol, game)  {
     if (typeof symbol === 'number') { return symbol }
+    if (game !== 'criket' && symbol === 's25') { return 50; }
     var firstLetter = symbol[0];
     var num = +symbol.slice(1);
     switch (firstLetter) {
@@ -132,6 +133,23 @@ let Helper =  {
       return 0;
     } else {
       return player + 1; 
+    }
+  },
+  mapDartboardBedToSymbol: function(bed) {
+    var firstLetter = bed[0];
+    switch (firstLetter) {
+      case 'd':
+        if(bed[1] === 'b') {
+          return 'd25'
+        } else {
+          return bed;
+        }
+      case 'm':
+        return 's0';
+      case 'b':
+        return 's25';
+      default:
+        return bed;
     }
   },
 

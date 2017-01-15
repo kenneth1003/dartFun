@@ -28,6 +28,7 @@
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
     "classname": "0.0.0",
+    "dartboard": "^1.0.2",
     "immutable": "^3.8.1",
     "lodash": "^3.10.1",
     "react": "^0.14.3",

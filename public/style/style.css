@@ -229,6 +229,14 @@ ul {
   font-size: 14px;
   color: #555;
 }
+.dartboard {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+.dartboard-hidden {
+  visibility: hidden;
+}
 
 .btn-special {
   background-color: #ccc;

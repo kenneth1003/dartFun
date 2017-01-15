@@ -6,6 +6,7 @@ import helper from '../helper';
 import audio from '../resource_entry/audio';
 
 import SettingList from './setting_list';
+import Dartboard from '../components/common/dartboard';
 import NextPlayerMask from '../components/common/next_player_mask';
 
 let scoreArr = [];
@@ -17,7 +18,6 @@ let round = {
 };
 
 
-
 class ScoreInput extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,8 @@ class ScoreInput extends Component {
       showNextPlayerMask: false,
     }
   }
-  scoreOnClick(num) {
+  
+  scoreOnClick(symbol) {
     if(this.props.players.size === 0) { alert('請先新增玩家'); return };
     const audioGameKey = this.props.gameStatus.get('type') === 'criket' ? 'criket' : 'zero1';
     const audioToPlay = audio[audioGameKey][this.props.gameStatus.get('audioKey')];
@@ -33,10 +34,10 @@ class ScoreInput extends Component {
     const player     = this.props.players.get(this.props.currentPlayer);
     const records    = player.get('records');
     const totalScore = helper.recordsToSum(records);
-    const judge      = checkEndCondition(totalScore, helper.symbolToNum(num), this.props.gameStatus.get('type'));
+    const judge      = checkEndCondition(totalScore, helper.symbolToNum(symbol), this.props.gameStatus.get('type'));
 
-    this.props.updateScore(num, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round.current);
-    helper.handleScorePlaying(num, audioToPlay)
+    helper.handleScorePlaying(symbol, audioToPlay);
+    this.props.updateScore(symbol, this.props.currentPlayer, this.props.gameStatus.get('currentRound'), round.current);
 
     if(judge === 1) { 
       audioToPlay.playGameEnd(); 
@@ -63,7 +64,7 @@ class ScoreInput extends Component {
       this.setState({
         showNextPlayerMask: true
       })
-      helper.handleScorePlaying(num,audioToPlay)
+      helper.handleScorePlaying(symbol,audioToPlay)
       setTimeout(audioToPlay.playPlayerOut.bind(audioToPlay), 700);
       setTimeout(() => {
         audioToPlay.playPlayerIn();
@@ -81,6 +82,7 @@ class ScoreInput extends Component {
       <div className="">
         <SettingList round={ round } />
           <hr/>
+        <Dartboard scoreOnClick={ this.scoreOnClick.bind(this) } gameStatus={ this.props.gameStatus } />
         <ul className={ cx({"score-btn-list": true, hidden: !this.props.gameStatus.get('playing') })}>
           <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 'd' + 25) }>Bull</button></li>
           <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 0) }>Miss</button></li>

@@ -36,7 +36,7 @@ export default function(state = initialState, action) {
           Map({count:0, name: "bull"})]) })
       }));
     case types.UPDATE_SCORE:
-      const { currentPlayer, currentRound, currentDart,score }  = action.payload;
+      const { currentPlayer, currentRound, currentDart, score }  = action.payload;
       const updated01 = state.setIn([currentPlayer, 'records' ,currentRound, currentDart], score);
       // criketScoreCount(score, state, currentPlayer);
       return criketScoreCount(score, updated01, currentPlayer);
