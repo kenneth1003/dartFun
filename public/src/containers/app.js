@@ -25,14 +25,19 @@ class App extends Component {
     if(this.props.gameStatus.get('type') === 'criket') {
       return (
         <div className="container">
-          <h1></h1>
-          <div className="top">
-            <CriketHistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
-            <CriketScoreBoard players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
-            <CriketCurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+          <div className="main-area pure-g">
+            <div className="pure-u-1-1 pure-u-lg-1-2">
+              <div className="top">
+                <CriketScoreBoard players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
+                <div className="flex">
+                  <CriketPlayers players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+                  <CriketCurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+                </div>
+                <CriketHistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
+              </div>
+            </div>
+            <CriketScoreInput />
           </div>
-          <CriketPlayers players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
-          <CriketScoreInput />
           <TotalStatToggle />
           <TotalStat players={ this.props.players } gameStatus={ this.props.gameStatus }/>
         </div>
@@ -41,14 +46,20 @@ class App extends Component {
     return (
       <div className="container">
         <Hint players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
-        <div className="top">
-          <HistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
-          <Stats players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
-          <CurrentScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
-          <CurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+        <Stats players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus }  />
+        <div className="main-area pure-g">
+          <div className="pure-u-1-1 pure-u-lg-1-2">
+            <div className="top">
+              <CurrentScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+              <div className="flex">
+                <Players players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+                <CurrentRound players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
+              </div>
+              <HistoryScore players={ this.props.players } currentPlayer={ this.props.currentPlayer } />
+            </div>
+          </div>
+          <ScoreInput />
         </div>
-        <Players players={ this.props.players } currentPlayer={ this.props.currentPlayer } gameStatus={ this.props.gameStatus } />
-        <ScoreInput />
         <TotalStatToggle />
         <TotalStat players={ this.props.players } gameStatus={ this.props.gameStatus }/>
       </div>

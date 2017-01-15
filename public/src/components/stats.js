@@ -13,6 +13,6 @@ export default ({ players, currentPlayer, gameStatus }) => {
     return (<div className="stats">三標平均:<br/>{ avg[currentPlayer] }</div>)
   }
   avg[currentPlayer] = (numerator / denominator).toFixed(2)
-  if (!denominator) { return <div className="stats">三標平均: <br/>-- </div>}
-  return (<div className="stats">三標平均: <br/> { avg[currentPlayer] }</div>)
+  if (!denominator) { return <div className="stats">三標平均: -- </div>}
+  return (<div className="stats">三標平均: { avg[currentPlayer] }</div>)
 }

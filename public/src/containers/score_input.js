@@ -73,14 +73,13 @@ class ScoreInput extends Component {
         _this.setState({
           showNextPlayerMask: false
         })
-      }, 5000)
+      }, 3000)
     }
   }
   render() {
     const gameType = this.props.gameStatus.get('type');
     return (
-      <div className="">
-        <hr/>
+      <div className="pure-u-1 pure-u-lg-1-2">
         <div className={ cx({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) }>
           <Dartboard scoreOnClick={ this.scoreOnClick.bind(this) } gameStatus={ this.props.gameStatus } />
           <ul className={ cx({"score-btn-list": true, hidden: !this.props.gameStatus.get('playing') })}>

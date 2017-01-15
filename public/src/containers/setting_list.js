@@ -11,13 +11,18 @@ import store from '../store';
 
 class SettingList extends Component {
   handleUndo() {
-    store.dispatch(ActionCreators.undo());
     if(this.props.round.current > 0) { 
       this.props.round.current--; 
+      store.dispatch(ActionCreators.undo());
       return
     }
+    if(!this.props.gameStatus.get('playing')) {
+      store.dispatch(ActionCreators.undo());
+      return;
+    }
     this.props.round.current = 3;
-
+    store.dispatch(ActionCreators.undo());
+    store.dispatch(ActionCreators.undo());
   }
   handleReset() {
     var shouldReset = confirm('確定要重來?');

@@ -13,13 +13,17 @@ export default ({ players, currentPlayer }) => {
     }
   return (
     <ol className="history-score-list">
+      <span className="score-label">歷史得分</span>
       <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
       {
         players.get(currentPlayer)
           .get('records')
-          .map((round, idx) => { let sum = round.reduce((pre, cur) => (pre + helper.symbolToNum(cur)), 0); sum = isNaN(sum) ? '呵呵' : sum ; return (<li key={ idx } className={cx({ 'font-red': sum > 100 })}>{ 
+          .map((round, idx) => { let sum = round.reduce((pre, cur) => (pre + helper.symbolToNum(cur)), 0); sum = isNaN(sum) ? '呵呵' : sum ; return (<li key={ idx } className={cx({ 'font-red': sum > 100 })}>
+          ({ idx + 1})
+          &nbsp;
+          { 
             sum
-          }</li>)} )
+          }&nbsp;</li>)} )
       }
       </ReactCSSTransitionGroup>
     </ol>

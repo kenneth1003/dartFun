@@ -11,15 +11,19 @@ export default ({ players, currentPlayer }) => {
     );
     }
   return (
-    <ol className="history-score-list">
+    <ul className="history-score-list">
       {
         players.get(currentPlayer)
           .get('records')
           .map((round, idx) => { let sum = round.reduce((pre, cur) => (pre + helper.symboToCounts(cur)), ''); 
-            return (<li key={ idx }>{ 
-            sum
-          }</li>)} )
+            return (<li key={ idx }>
+            ({ idx + 1})
+            &nbsp;
+            { sum }
+            &nbsp;
+
+        </li>)} )
       }
-    </ol>
+    </ul>
   )
 }
