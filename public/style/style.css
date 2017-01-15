@@ -391,8 +391,10 @@ ul {
   }
   .input-area-container {
     position: fixed;
-    opacity: 0.2;
     bottom: -24px;
+  }
+  .input-area-container .dartboard, .input-area-container .score-btn-list{
+    opacity: 0.2;
   }
   .history-score-list {
     display: inline-block;
@@ -413,6 +415,10 @@ ul {
     margin: 0 20px;
     text-shadow: none
   }
+  .dartboard {
+    width: 400px;
+    height: 400px;
+  } 
 
 
   .s-hide {

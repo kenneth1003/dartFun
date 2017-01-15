@@ -21914,16 +21914,27 @@
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'container' },
-	          _react2.default.createElement('h1', null),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'top' },
-	            _react2.default.createElement(_history_score4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
-	            _react2.default.createElement(_score_board2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	            _react2.default.createElement(_current_round4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
+	            { className: 'main-area pure-g' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'pure-u-1-1 pure-u-lg-1-2' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'top' },
+	                _react2.default.createElement(_score_board2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'flex' },
+	                  _react2.default.createElement(_players4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	                  _react2.default.createElement(_current_round4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
+	                ),
+	                _react2.default.createElement(_history_score4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer })
+	              )
+	            ),
+	            _react2.default.createElement(_score_input4.default, null)
 	          ),
-	          _react2.default.createElement(_players4.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_score_input4.default, null),
 	          _react2.default.createElement(_total_stats_toggle2.default, null),
 	          _react2.default.createElement(_total_stats2.default, { players: this.props.players, gameStatus: this.props.gameStatus })
 	        );
@@ -21932,16 +21943,28 @@
 	        'div',
 	        { className: 'container' },
 	        _react2.default.createElement(_hint2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	        _react2.default.createElement(_stats2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'top' },
-	          _react2.default.createElement(_history_score2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer }),
-	          _react2.default.createElement(_stats2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_current_score2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	          _react2.default.createElement(_current_round2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
+	          { className: 'main-area pure-g' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'pure-u-1-1 pure-u-lg-1-2' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'top' },
+	              _react2.default.createElement(_current_score2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'flex' },
+	                _react2.default.createElement(_players2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
+	                _react2.default.createElement(_current_round2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus })
+	              ),
+	              _react2.default.createElement(_history_score2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer })
+	            )
+	          ),
+	          _react2.default.createElement(_score_input2.default, null)
 	        ),
-	        _react2.default.createElement(_players2.default, { players: this.props.players, currentPlayer: this.props.currentPlayer, gameStatus: this.props.gameStatus }),
-	        _react2.default.createElement(_score_input2.default, null),
 	        _react2.default.createElement(_total_stats_toggle2.default, null),
 	        _react2.default.createElement(_total_stats2.default, { players: this.props.players, gameStatus: this.props.gameStatus })
 	      );
@@ -27597,17 +27620,13 @@
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'stats' },
-	      '\u4E09\u6A19\u5E73\u5747: ',
-	      _react2.default.createElement('br', null),
-	      '-- '
+	      '\u4E09\u6A19\u5E73\u5747: -- '
 	    );
 	  }
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'stats' },
 	    '\u4E09\u6A19\u5E73\u5747: ',
-	    _react2.default.createElement('br', null),
-	    ' ',
 	    avg[currentPlayer]
 	  );
 	};
@@ -28667,8 +28686,13 @@
 	    );
 	  }
 	  return _react2.default.createElement(
-	    'ol',
+	    'ul',
 	    { className: 'current-round-list' },
+	    _react2.default.createElement(
+	      'span',
+	      { className: 'score-label' },
+	      '\u56DE\u5408\u5F97\u5206'
+	    ),
 	    players.get(currentPlayer).get('records').get(gameStatus.get('currentRound')).map(function (dart, idx) {
 	      return _react2.default.createElement(
 	        'li',
@@ -28726,6 +28750,11 @@
 	    'ol',
 	    { className: 'history-score-list' },
 	    _react2.default.createElement(
+	      'span',
+	      { className: 'score-label' },
+	      '\u6B77\u53F2\u5F97\u5206'
+	    ),
+	    _react2.default.createElement(
 	      _reactAddonsCssTransitionGroup2.default,
 	      { transitionName: 'example', transitionEnterTimeout: 700, transitionLeaveTimeout: 700 },
 	      players.get(currentPlayer).get('records').map(function (round, idx) {
@@ -28734,7 +28763,11 @@
 	        }, 0);sum = isNaN(sum) ? '呵呵' : sum;return _react2.default.createElement(
 	          'li',
 	          { key: idx, className: (0, _classname2.default)({ 'font-red': sum > 100 }) },
-	          sum
+	          '(',
+	          idx + 1,
+	          ') \xA0',
+	          sum,
+	          '\xA0'
 	        );
 	      })
 	    )
@@ -28873,7 +28906,7 @@
 	            _this.setState({
 	              showNextPlayerMask: false
 	            });
-	          }, 5000);
+	          }, 3000);
 	        })();
 	      }
 	    }
@@ -28885,8 +28918,7 @@
 	      var gameType = this.props.gameStatus.get('type');
 	      return _react2.default.createElement(
 	        'div',
-	        { className: '' },
-	        _react2.default.createElement('hr', null),
+	        { className: 'pure-u-1 pure-u-lg-1-2' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: (0, _classname2.default)({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) },
@@ -29297,12 +29329,18 @@
 	  _createClass(SettingList, [{
 	    key: 'handleUndo',
 	    value: function handleUndo() {
-	      _store2.default.dispatch(_reduxUndo.ActionCreators.undo());
 	      if (this.props.round.current > 0) {
 	        this.props.round.current--;
+	        _store2.default.dispatch(_reduxUndo.ActionCreators.undo());
+	        return;
+	      }
+	      if (!this.props.gameStatus.get('playing')) {
+	        _store2.default.dispatch(_reduxUndo.ActionCreators.undo());
 	        return;
 	      }
 	      this.props.round.current = 3;
+	      _store2.default.dispatch(_reduxUndo.ActionCreators.undo());
+	      _store2.default.dispatch(_reduxUndo.ActionCreators.undo());
 	    }
 	  }, {
 	    key: 'handleReset',
@@ -35428,8 +35466,13 @@
 	    );
 	  }
 	  return _react2.default.createElement(
-	    'ol',
+	    'ul',
 	    { className: 'current-round-list' },
+	    _react2.default.createElement(
+	      'span',
+	      { className: 'score-label' },
+	      '\u56DE\u5408\u5F97\u5206'
+	    ),
 	    players.get(currentPlayer).get('records').get(gameStatus.get('currentRound')).map(function (dart, idx) {
 	      return _react2.default.createElement(
 	        'li',
@@ -35480,7 +35523,7 @@
 	    );
 	  }
 	  return _react2.default.createElement(
-	    'ol',
+	    'ul',
 	    { className: 'history-score-list' },
 	    players.get(currentPlayer).get('records').map(function (round, idx) {
 	      var sum = round.reduce(function (pre, cur) {
@@ -35489,7 +35532,11 @@
 	      return _react2.default.createElement(
 	        'li',
 	        { key: idx },
-	        sum
+	        '(',
+	        idx + 1,
+	        ') \xA0',
+	        sum,
+	        '\xA0'
 	      );
 	    })
 	  );
@@ -35620,9 +35667,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        _react2.default.createElement(_setting_list2.default, { round: round }),
-	        _react2.default.createElement('hr', null),
+	        { className: 'pure-u-1-1 pure-u-lg-1-2' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: (0, _classname2.default)({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) },
@@ -35719,6 +35764,7 @@
 	            )
 	          )
 	        ),
+	        _react2.default.createElement(_setting_list2.default, { round: round }),
 	        this.state.showNextPlayerMask && _react2.default.createElement(_next_player_mask2.default, null)
 	      );
 	    }

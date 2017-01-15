@@ -10,8 +10,8 @@ const initialState = Map({
   playing: false, 
   ended: false,
   currentDart: 0,
-  // audioKey: 'dexter'
-  audioKey: 'dartslive',
+  audioKey: 'dexter',
+  // audioKey: 'dartslive',
   inputMode: 'board'
 });
 export default function(state = initialState, action) {
