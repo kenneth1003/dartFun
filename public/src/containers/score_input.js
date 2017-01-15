@@ -73,7 +73,7 @@ class ScoreInput extends Component {
         _this.setState({
           showNextPlayerMask: false
         })
-      }, 3000)
+      }, 5000)
     }
   }
   render() {

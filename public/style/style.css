@@ -399,7 +399,7 @@ ul {
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,.3);
-  animation: nextPlayer 3s ease-in-out;
+  animation: nextPlayer 5s ease-in-out;
 }
 @keyframes nextPlayer {
   0% {opacity: 0.5; transform: translateY(0)}
