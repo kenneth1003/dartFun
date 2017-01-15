@@ -28918,7 +28918,7 @@
 	      var gameType = this.props.gameStatus.get('type');
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'pure-u-1 pure-u-lg-1-2' },
+	        { className: 'pure-u-1 pure-u-lg-1-2 input-area-container' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: (0, _classname2.default)({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) },
@@ -30108,8 +30108,8 @@
 	  playing: false,
 	  ended: false,
 	  currentDart: 0,
-	  // audioKey: 'dexter'
-	  audioKey: 'dartslive',
+	  audioKey: 'dexter',
+	  // audioKey: 'dartslive',
 	  inputMode: 'board'
 	});
 
@@ -35667,7 +35667,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'pure-u-1-1 pure-u-lg-1-2' },
+	        { className: 'pure-u-1-1 pure-u-lg-1-2 input-area-container' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: (0, _classname2.default)({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) },
