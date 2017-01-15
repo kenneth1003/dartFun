@@ -80,26 +80,28 @@ class ScoreInput extends Component {
     const gameType = this.props.gameStatus.get('type');
     return (
       <div className="">
+        <hr/>
+        <div className={ cx({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) }>
+          <Dartboard scoreOnClick={ this.scoreOnClick.bind(this) } gameStatus={ this.props.gameStatus } />
+          <ul className={ cx({"score-btn-list": true, hidden: !this.props.gameStatus.get('playing') })}>
+            <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 'd' + 25) }>Bull</button></li>
+            <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 0) }>Miss</button></li>
+            <br/>
+            <li className="s-hide">1倍</li><br className="s-hide"/>
+            { scoreArr.map( (score, idx) => {
+              return (<li className="btn-single" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 's' + (idx+1)) }>{ idx+1 }</button></li>)
+            }) }
+            <li className="s-hide">2倍</li><br className="s-hide"/>
+            { scoreArr.map( (score, idx) => {
+              return (<li className="btn-double" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 'd' + (idx+1)) }>{ idx+1 }</button></li>)
+            }) }
+            <li className="s-hide">3倍</li><br className="s-hide"/>
+            { scoreArr.map( (score, idx) => {
+              return (<li className="btn-triple" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 't' + (idx+1)) }>{ idx+1 }</button></li>)
+            }) }
+          </ul>
+        </div>
         <SettingList round={ round } />
-          <hr/>
-        <Dartboard scoreOnClick={ this.scoreOnClick.bind(this) } gameStatus={ this.props.gameStatus } />
-        <ul className={ cx({"score-btn-list": true, hidden: !this.props.gameStatus.get('playing') })}>
-          <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 'd' + 25) }>Bull</button></li>
-          <li className="btn-special"><button onClick={ this.scoreOnClick.bind(this, 's' + 0) }>Miss</button></li>
-          <br/>
-          <li className="s-hide">1倍</li><br className="s-hide"/>
-          { scoreArr.map( (score, idx) => {
-            return (<li className="btn-single" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 's' + (idx+1)) }>{ idx+1 }</button></li>)
-          }) }
-          <li className="s-hide">2倍</li><br className="s-hide"/>
-          { scoreArr.map( (score, idx) => {
-            return (<li className="btn-double" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 'd' + (idx+1)) }>{ idx+1 }</button></li>)
-          }) }
-          <li className="s-hide">3倍</li><br className="s-hide"/>
-          { scoreArr.map( (score, idx) => {
-            return (<li className="btn-triple" key={ idx }><button onClick={ this.scoreOnClick.bind(this, 't' + (idx+1)) }>{ idx+1 }</button></li>)
-          }) }
-        </ul>
         { this.state.showNextPlayerMask && <NextPlayerMask /> }
       </div>
     )

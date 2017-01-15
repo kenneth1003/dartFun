@@ -15,11 +15,17 @@ export default class Dartboard extends Component {
     dartboard.render();
     document.querySelector('#dartboard').addEventListener('throw', function(d) {
       const symbol = helper.mapDartboardBedToSymbol(d.detail.bed.toLowerCase());
+      if(_this.props.gameStatus.get('type') === 'criket') {
+        if(+symbol.slice(1) < 15) {
+          _this.props.scoreOnClick('s0');
+          return;
+        }
+      }
       _this.props.scoreOnClick(symbol);
    });
   }
   render() {
-    return <div className={ cx({"dartboard": true, 'dartboard-hidden': !this.props.gameStatus.get('playing') })} id="dartboard" />
+    return <div className={ cx({'dartboard': true, 'dartboard-hidden': this.props.gameStatus.get('inputMode') !== 'board' || !this.props.gameStatus.get('playing') })} id="dartboard" />
   }
 }
 

@@ -59,6 +59,15 @@ class SettingList extends Component {
             onClick={ this.props.changeAudio.bind(null, 'dartslive') }>
             <button>2</button>
         </li>
+        <li  style={ {textAlign: 'right'}}>Input：</li>
+        <li className={ cx({ active: this.props.gameStatus.get('inputMode') === 'board' }) } 
+            onClick={ this.props.changeInputMode.bind(null, 'board') }>
+          <button>鏢靶</button>
+        </li>
+        <li className={ cx({ active: this.props.gameStatus.get('inputMode') !== 'board' }) } 
+            onClick={ this.props.changeInputMode.bind(null, 'num') }>
+            <button>數字</button>
+        </li>
         <li className={ cx({ hidden: isPlaying || isEnded }) } style={ {textAlign: 'right'}}>
           種類：
         </li>

@@ -63,7 +63,7 @@ let Helper =  {
     if (typeof symbol === 'number') { return symbol }
     var firstLetter = symbol[0];
     var num = +symbol.slice(1);
-    if (num < 15) { return '-' };
+    if (num < 15) { return '0' };
     switch (firstLetter) {
       case 's':
         return '1';

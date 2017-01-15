@@ -11,7 +11,8 @@ const initialState = Map({
   ended: false,
   currentDart: 0,
   // audioKey: 'dexter'
-  audioKey: 'dartslive'
+  audioKey: 'dartslive',
+  inputMode: 'board'
 });
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -31,6 +32,9 @@ export default function(state = initialState, action) {
 
     case types.CHANGE_AUDIO:
       return state.set('audioKey', action.payload);
+
+    case types.CHANGE_INPUT_MODE:
+      return state.set('inputMode', action.payload);
 
     case types.GAME_START:
       return state.set('playing', true);

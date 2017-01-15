@@ -49,6 +49,13 @@ export function changeAudio(key) {
   }
 }
 
+export function changeInputMode(mode) {
+  return {
+    type: types.CHANGE_INPUT_MODE,
+    payload: mode
+  }
+}
+
 
 export function reset () {
   return {

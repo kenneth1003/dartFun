@@ -22278,7 +22278,7 @@
 	    var firstLetter = symbol[0];
 	    var num = +symbol.slice(1);
 	    if (num < 15) {
-	      return '-';
+	      return '0';
 	    };
 	    switch (firstLetter) {
 	      case 's':
@@ -28886,83 +28886,87 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: '' },
-	        _react2.default.createElement(_setting_list2.default, { round: round }),
 	        _react2.default.createElement('hr', null),
-	        _react2.default.createElement(_dartboard2.default, { scoreOnClick: this.scoreOnClick.bind(this), gameStatus: this.props.gameStatus }),
 	        _react2.default.createElement(
-	          'ul',
-	          { className: (0, _classname2.default)({ "score-btn-list": true, hidden: !this.props.gameStatus.get('playing') }) },
+	          'div',
+	          { className: (0, _classname2.default)({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) },
+	          _react2.default.createElement(_dartboard2.default, { scoreOnClick: this.scoreOnClick.bind(this), gameStatus: this.props.gameStatus }),
 	          _react2.default.createElement(
-	            'li',
-	            { className: 'btn-special' },
+	            'ul',
+	            { className: (0, _classname2.default)({ "score-btn-list": true, hidden: !this.props.gameStatus.get('playing') }) },
 	            _react2.default.createElement(
-	              'button',
-	              { onClick: this.scoreOnClick.bind(this, 'd' + 25) },
-	              'Bull'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 'btn-special' },
+	              'li',
+	              { className: 'btn-special' },
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this.scoreOnClick.bind(this, 'd' + 25) },
+	                'Bull'
+	              )
+	            ),
 	            _react2.default.createElement(
-	              'button',
-	              { onClick: this.scoreOnClick.bind(this, 's' + 0) },
-	              'Miss'
-	            )
-	          ),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 's-hide' },
-	            '1\u500D'
-	          ),
-	          _react2.default.createElement('br', { className: 's-hide' }),
-	          scoreArr.map(function (score, idx) {
-	            return _react2.default.createElement(
 	              'li',
-	              { className: 'btn-single', key: idx },
+	              { className: 'btn-special' },
 	              _react2.default.createElement(
 	                'button',
-	                { onClick: _this4.scoreOnClick.bind(_this4, 's' + (idx + 1)) },
-	                idx + 1
+	                { onClick: this.scoreOnClick.bind(this, 's' + 0) },
+	                'Miss'
 	              )
-	            );
-	          }),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 's-hide' },
-	            '2\u500D'
-	          ),
-	          _react2.default.createElement('br', { className: 's-hide' }),
-	          scoreArr.map(function (score, idx) {
-	            return _react2.default.createElement(
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
 	              'li',
-	              { className: 'btn-double', key: idx },
-	              _react2.default.createElement(
-	                'button',
-	                { onClick: _this4.scoreOnClick.bind(_this4, 'd' + (idx + 1)) },
-	                idx + 1
-	              )
-	            );
-	          }),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 's-hide' },
-	            '3\u500D'
-	          ),
-	          _react2.default.createElement('br', { className: 's-hide' }),
-	          scoreArr.map(function (score, idx) {
-	            return _react2.default.createElement(
+	              { className: 's-hide' },
+	              '1\u500D'
+	            ),
+	            _react2.default.createElement('br', { className: 's-hide' }),
+	            scoreArr.map(function (score, idx) {
+	              return _react2.default.createElement(
+	                'li',
+	                { className: 'btn-single', key: idx },
+	                _react2.default.createElement(
+	                  'button',
+	                  { onClick: _this4.scoreOnClick.bind(_this4, 's' + (idx + 1)) },
+	                  idx + 1
+	                )
+	              );
+	            }),
+	            _react2.default.createElement(
 	              'li',
-	              { className: 'btn-triple', key: idx },
-	              _react2.default.createElement(
-	                'button',
-	                { onClick: _this4.scoreOnClick.bind(_this4, 't' + (idx + 1)) },
-	                idx + 1
-	              )
-	            );
-	          })
+	              { className: 's-hide' },
+	              '2\u500D'
+	            ),
+	            _react2.default.createElement('br', { className: 's-hide' }),
+	            scoreArr.map(function (score, idx) {
+	              return _react2.default.createElement(
+	                'li',
+	                { className: 'btn-double', key: idx },
+	                _react2.default.createElement(
+	                  'button',
+	                  { onClick: _this4.scoreOnClick.bind(_this4, 'd' + (idx + 1)) },
+	                  idx + 1
+	                )
+	              );
+	            }),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 's-hide' },
+	              '3\u500D'
+	            ),
+	            _react2.default.createElement('br', { className: 's-hide' }),
+	            scoreArr.map(function (score, idx) {
+	              return _react2.default.createElement(
+	                'li',
+	                { className: 'btn-triple', key: idx },
+	                _react2.default.createElement(
+	                  'button',
+	                  { onClick: _this4.scoreOnClick.bind(_this4, 't' + (idx + 1)) },
+	                  idx + 1
+	                )
+	              );
+	            })
+	          )
 	        ),
+	        _react2.default.createElement(_setting_list2.default, { round: round }),
 	        this.state.showNextPlayerMask && _react2.default.createElement(_next_player_mask2.default, null)
 	      );
 	    }
@@ -29008,6 +29012,7 @@
 	exports.gameEnd = gameEnd;
 	exports.gameStart = gameStart;
 	exports.changeAudio = changeAudio;
+	exports.changeInputMode = changeInputMode;
 	exports.reset = reset;
 	exports.addPlayer = addPlayer;
 	exports.setGame = setGame;
@@ -29066,6 +29071,13 @@
 	  };
 	}
 
+	function changeInputMode(mode) {
+	  return {
+	    type: types.CHANGE_INPUT_MODE,
+	    payload: mode
+	  };
+	}
+
 	function reset() {
 	  return {
 	    type: types.RESET
@@ -29114,6 +29126,7 @@
 	var BURST = exports.BURST = 'burst';
 	var UPDATE_DART = exports.UPDATE_DART = 'update_dart';
 	var CHANGE_AUDIO = exports.CHANGE_AUDIO = 'change_audio';
+	var CHANGE_INPUT_MODE = exports.CHANGE_INPUT_MODE = 'change_input_mode';
 	var GAME_START = exports.GAME_START = 'game_start';
 	var GAME_END = exports.GAME_END = 'game_end';
 
@@ -29378,6 +29391,31 @@
 	            'button',
 	            null,
 	            '2'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { style: { textAlign: 'right' } },
+	          'Input\uFF1A'
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { className: (0, _classname2.default)({ active: this.props.gameStatus.get('inputMode') === 'board' }),
+	            onClick: this.props.changeInputMode.bind(null, 'board') },
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            '\u93E2\u9776'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          { className: (0, _classname2.default)({ active: this.props.gameStatus.get('inputMode') !== 'board' }),
+	            onClick: this.props.changeInputMode.bind(null, 'num') },
+	          _react2.default.createElement(
+	            'button',
+	            null,
+	            '\u6578\u5B57'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -29993,6 +30031,9 @@
 	    case types.CHANGE_AUDIO:
 	      return state.set('audioKey', action.payload);
 
+	    case types.CHANGE_INPUT_MODE:
+	      return state.set('inputMode', action.payload);
+
 	    case types.GAME_START:
 	      return state.set('playing', true);
 
@@ -30030,7 +30071,8 @@
 	  ended: false,
 	  currentDart: 0,
 	  // audioKey: 'dexter'
-	  audioKey: 'dartslive'
+	  audioKey: 'dartslive',
+	  inputMode: 'board'
 	});
 
 /***/ },
@@ -30123,13 +30165,19 @@
 	      dartboard.render();
 	      document.querySelector('#dartboard').addEventListener('throw', function (d) {
 	        var symbol = _helper2.default.mapDartboardBedToSymbol(d.detail.bed.toLowerCase());
+	        if (_this.props.gameStatus.get('type') === 'criket') {
+	          if (+symbol.slice(1) < 15) {
+	            _this.props.scoreOnClick('s0');
+	            return;
+	          }
+	        }
 	        _this.props.scoreOnClick(symbol);
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', { className: (0, _classname2.default)({ "dartboard": true, 'dartboard-hidden': !this.props.gameStatus.get('playing') }), id: 'dartboard' });
+	      return _react2.default.createElement('div', { className: (0, _classname2.default)({ 'dartboard': true, 'dartboard-hidden': this.props.gameStatus.get('inputMode') !== 'board' || !this.props.gameStatus.get('playing') }), id: 'dartboard' });
 	    }
 	  }]);
 
@@ -35485,6 +35533,10 @@
 
 	var _setting_list2 = _interopRequireDefault(_setting_list);
 
+	var _dartboard = __webpack_require__(231);
+
+	var _dartboard2 = _interopRequireDefault(_dartboard);
+
 	var _next_player_mask = __webpack_require__(233);
 
 	var _next_player_mask2 = _interopRequireDefault(_next_player_mask);
@@ -35572,93 +35624,98 @@
 	        _react2.default.createElement(_setting_list2.default, { round: round }),
 	        _react2.default.createElement('hr', null),
 	        _react2.default.createElement(
-	          'ul',
-	          { className: (0, _classname2.default)({ "score-btn-list": true, hidden: !this.props.gameStatus.get('playing') }) },
+	          'div',
+	          { className: (0, _classname2.default)({ 'input-area': true, 'input-area-board': this.props.gameStatus.get('inputMode') === 'board' }) },
+	          _react2.default.createElement(_dartboard2.default, { scoreOnClick: this.scoreOnClick.bind(this), gameStatus: this.props.gameStatus }),
 	          _react2.default.createElement(
-	            'li',
-	            { className: 'btn-special' },
+	            'ul',
+	            { className: (0, _classname2.default)({ "score-btn-list": true, hidden: !this.props.gameStatus.get('playing') }) },
 	            _react2.default.createElement(
-	              'button',
-	              { onClick: this.scoreOnClick.bind(this, 's' + 0) },
-	              'Miss'
-	            )
-	          ),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            '1\u500D'
-	          ),
-	          scoreArr.map(function (score, idx) {
-	            return _react2.default.createElement(
 	              'li',
-	              { className: 'btn-single', key: idx },
+	              { className: 'btn-special' },
 	              _react2.default.createElement(
 	                'button',
-	                { onClick: _this4.scoreOnClick.bind(_this4, 's' + (idx + 15)) },
-	                idx + 15
+	                { onClick: this.scoreOnClick.bind(this, 's' + 0) },
+	                'Miss'
 	              )
-	            );
-	          }),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 'btn-single' },
+	            ),
+	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
-	              'button',
-	              { onClick: this.scoreOnClick.bind(this, 's25') },
-	              'Bull'
-	            )
-	          ),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            '2\u500D'
-	          ),
-	          scoreArr.map(function (score, idx) {
-	            return _react2.default.createElement(
 	              'li',
-	              { className: 'btn-double', key: idx },
-	              _react2.default.createElement(
-	                'button',
-	                { onClick: _this4.scoreOnClick.bind(_this4, 'd' + (idx + 15)) },
-	                idx + 15
-	              )
-	            );
-	          }),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 'btn-double' },
-	            _react2.default.createElement(
-	              'button',
-	              { onClick: this.scoreOnClick.bind(this, 'd25') },
-	              'Bull'
-	            )
-	          ),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            '3\u500D'
-	          ),
-	          scoreArr.map(function (score, idx) {
-	            return _react2.default.createElement(
-	              'li',
-	              { className: 'btn-triple', key: idx },
-	              _react2.default.createElement(
-	                'button',
-	                { onClick: _this4.scoreOnClick.bind(_this4, 't' + (idx + 15)) },
-	                idx + 15
-	              )
-	            );
-	          }),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 'btn-double' },
-	            _react2.default.createElement(
-	              'button',
 	              null,
-	              '\xA0'
+	              '1\u500D'
+	            ),
+	            scoreArr.map(function (score, idx) {
+	              return _react2.default.createElement(
+	                'li',
+	                { className: 'btn-single', key: idx },
+	                _react2.default.createElement(
+	                  'button',
+	                  { onClick: _this4.scoreOnClick.bind(_this4, 's' + (idx + 15)) },
+	                  idx + 15
+	                )
+	              );
+	            }),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'btn-single' },
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this.scoreOnClick.bind(this, 's25') },
+	                'Bull'
+	              )
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              '2\u500D'
+	            ),
+	            scoreArr.map(function (score, idx) {
+	              return _react2.default.createElement(
+	                'li',
+	                { className: 'btn-double', key: idx },
+	                _react2.default.createElement(
+	                  'button',
+	                  { onClick: _this4.scoreOnClick.bind(_this4, 'd' + (idx + 15)) },
+	                  idx + 15
+	                )
+	              );
+	            }),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'btn-double' },
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this.scoreOnClick.bind(this, 'd25') },
+	                'Bull'
+	              )
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              '3\u500D'
+	            ),
+	            scoreArr.map(function (score, idx) {
+	              return _react2.default.createElement(
+	                'li',
+	                { className: 'btn-triple', key: idx },
+	                _react2.default.createElement(
+	                  'button',
+	                  { onClick: _this4.scoreOnClick.bind(_this4, 't' + (idx + 15)) },
+	                  idx + 15
+	                )
+	              );
+	            }),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'btn-double' },
+	              _react2.default.createElement(
+	                'button',
+	                null,
+	                '\xA0'
+	              )
 	            )
 	          )
 	        ),
